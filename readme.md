@@ -10,3 +10,6 @@
 * The website will begin with buttons randomly laid out, users then complete goals either through real-life users, or using Selenium in order to simulate inputs 
 
 * The RL model is then fed a constant stream of user input data, and how long it took to complete a goal for the current layout. Through an evolutionary process it will attempt to optimise the layout to reduce the time taken to complete goals. 
+
+## Useful Resources
+* [A list of .gitignore templates](https://github.com/github/gitignore)
