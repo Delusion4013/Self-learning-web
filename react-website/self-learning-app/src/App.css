@@ -1,38 +1,51 @@
-.App {
-  text-align: center;
+
+:root {
+	--grid-padding: 10px;
+	--main-bg-dark-color:#1a1a1d;
+	--main-color: var(#c96567);
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html, body {
+	height: 100%;
+	
+}
+#root {
+	background-color: #c96567;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#container {
+	width: fit-content;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.layout-grid {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-template-rows: repeat(5,1fr);
+
+	align-items: center;
+	justify-items: center;
+	width: 800px;
+	height: 800px;
+
+
 }
 
-.App-link {
-  color: #61dafb;
+.styled-box {
+
+	padding: 10px;
+	margin: 10px;
+	border-radius: 5px;
+	box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; 
+	background-color: white;
+	/* parameters from https://getcssscan.com/css-box-shadow-examples */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.task-button {
+	width: 80%;
+	height: 80%;
 }
+
