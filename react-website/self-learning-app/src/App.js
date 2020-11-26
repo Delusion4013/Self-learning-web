@@ -9,10 +9,8 @@ function App() {
 			<h1 >
 				Quiver Bank
 			</h1>
-			
 		</header>
 		<LayoutGrid layout={currentLayout}>
-
 		</LayoutGrid>
     </div>
   );
