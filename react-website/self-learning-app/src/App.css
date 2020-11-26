@@ -1,8 +1,12 @@
 
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+
 :root {
 	--grid-padding: 10px;
-	--main-bg-dark-color:#1a1a1d;
-	--main-color: var(#c96567);
+	--main-bg-dark-color:#33333d;
+	--main-color: #c96567;
 
 }
 
@@ -11,7 +15,7 @@ html, body {
 	
 }
 #root {
-	background-color: #c96567;
+	background-color: var(--main-bg-dark-color);
 }
 
 #container {
@@ -35,17 +39,45 @@ html, body {
 }
 
 .styled-box {
-
-	padding: 10px;
+	font-family: 'Poppins', sans-serif;
+	padding: 20px;
 	margin: 10px;
-	border-radius: 5px;
+	border-radius: 1px;
 	box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; 
 	background-color: white;
 	/* parameters from https://getcssscan.com/css-box-shadow-examples */
 }
 
 .task-button {
-	width: 80%;
-	height: 80%;
+	border: none;
+	cursor: pointer;	
+	width: 90%;
+	height: 90%;
+	font-weight: bold;
+	font-size: 20px;
+
+}
+
+.title {
+	background:none;
+
+
+	color: white;
+	box-shadow: none;
+}
+
+
+button:hover,
+button:focus {
+
+}
+
+button:focus {
+	border: none;
+	outline: none;
+}
+
+button:active {
+    transform: scale(0.99);
 }
 

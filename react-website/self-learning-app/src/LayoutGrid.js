@@ -6,7 +6,7 @@ import TaskButton from './TaskButton';
 function LayoutGrid(props) {
 	let elements = props.layout;
 	return (
-		<div className="styled-box layout-grid">
+		<div className="layout-grid">
 			{elements.map(e => {
 				return (<TaskButton id={e.id} rect={e.rect}> 
 					{e.content}
