@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import LayoutGrid from './LayoutGrid';
 import currentLayout from './grid-layouts/test';
@@ -7,7 +7,7 @@ function App() {
     <div id="container">
 		<header  className="title styled-box">
 			<h1 >
-				Quiver Bank
+			🏹 Quiver Bank
 			</h1>
 		</header>
 		<LayoutGrid layout={currentLayout}>

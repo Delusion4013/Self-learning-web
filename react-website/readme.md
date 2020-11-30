@@ -1,5 +1,9 @@
 # React App
 
+# Misc Notes
+ - So far there's nothing to check if elements are overlapping, since they're all independent of each other
+ - One idea might be to store a 2D array that adds the elements like a bitmap just to check
+
 # Files
 
 ## `src/` ##
@@ -37,7 +41,8 @@
 
 
 ## Getting Started
-To get started for development, cd into `react-website/self-learning-app` and run `npm start` 
+To get started for development, cd into `react-website/self-learning-app` and run``npm install` followed by `npm start` 
+
 
 ## Useful Resources
 

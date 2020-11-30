@@ -1,12 +1,13 @@
 
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap');
 
 :root {
 	--grid-padding: 10px;
-	--main-bg-dark-color:#33333d;
-	--main-color: #c96567;
+	--main-bg-dark-color:	#24292e;
+	--main-color: #d73a49;
+	--main-font: 'Poppins', sans-serif;
 
 }
 
@@ -25,6 +26,7 @@ html, body {
 	flex-direction: column;
 }
 
+
 .layout-grid {
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
@@ -39,12 +41,14 @@ html, body {
 }
 
 .styled-box {
-	font-family: 'Poppins', sans-serif;
+	font-family: var(--main-font);
+	font-weight: normal;
 	padding: 20px;
 	margin: 10px;
 	border-radius: 1px;
-	box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; 
-	background-color: white;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	color: white;
+	background-color: var(--main-color);
 	/* parameters from https://getcssscan.com/css-box-shadow-examples */
 }
 
@@ -55,7 +59,7 @@ html, body {
 	height: 90%;
 	font-weight: bold;
 	font-size: 20px;
-
+	transition: 0.3s;
 }
 
 .title {
@@ -67,9 +71,9 @@ html, body {
 }
 
 
-button:hover,
-button:focus {
 
+button:hover {
+	filter: brightness(80%);
 }
 
 button:focus {
