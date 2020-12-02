@@ -1,43 +1,49 @@
-[
-	{	
-		"id" : "signIn",
-		"content" : "Sign in",
-		"rect": {
-			"x" : 1,
-			"y" : 1,
-			"w" : 1,
-			"h" : 1
-		}
+{
+	"gridParams": {
+		"w": 4,
+		"h": 4
 	},
-	{	
-		"id" : "signOut",
-		"content" : "Sign Out",
-		"rect": {
-			"x" : 1,
-			"y" : 2,
-			"w" : 1,
-			"h" : 1
+	"elements": [
+		{	
+			"id" : "signIn",
+			"content" : "Sign in",
+			"rect": {
+				"x" : 1,
+				"y" : 1,
+				"w" : 1,
+				"h" : 1
+			}
+		},
+		{	
+			"id" : "signOut",
+			"content" : "Sign Out",
+			"rect": {
+				"x" : 1,
+				"y" : 2,
+				"w" : 1,
+				"h" : 1
+			}
+		},
+		{	
+			"id" : "account",
+			"content" : "Account",
+			"rect": {
+				"x" : 2,
+				"y" : 1,
+				"w" : 2,
+				"h" : 1
+			}
+		},
+		{	
+			"id" : "Test",
+			"content" : "Test",
+			"rect": {
+				"x" : 4,
+				"y" : 2,
+				"w" : 2,
+				"h" : 1
+			}
 		}
-	},
-	{	
-		"id" : "account",
-		"content" : "Account",
-		"rect": {
-			"x" : 2,
-			"y" : 1,
-			"w" : 2,
-			"h" : 1
-		}
-	},
-	{	
-		"id" : "Test",
-		"content" : "Test",
-		"rect": {
-			"x" : 4,
-			"y" : 2,
-			"w" : 2,
-			"h" : 1
-		}
-	}
-
-]
+	
+	]
+}
