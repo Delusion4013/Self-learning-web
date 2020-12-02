@@ -1,8 +1,27 @@
 # React App
 
+## Getting Started
+To get started for development, cd into `react-website/self-learning-app` and run``npm install` followed by `npm start` 
+
+
+ - The app currently runs using create-react-app which is a node.js program that just gives you a simple local http server to run a website
+
+The basic pipeline is:
+ - `index.html` loads
+ - `index.js` starts React
+ - React loads the one page we have for the application, `App.js`
+ - `App.js` contains the LayoutGrid
+ - Layoutgrid element takes its parameters from an array from the imported JSON file
+   - Maps the array of objects to TaskButton elements
+   - TaskButton takes the width, height, x and y as parameters and uses that to place itself on a css grid, and also `content` which is just some text to put in the button
+
+ 
+
+
 # Misc Notes
  - So far there's nothing to check if elements are overlapping, since they're all independent of each other
  - One idea might be to store a 2D array that adds the elements like a bitmap just to check
+
 
 # Files
 
@@ -37,11 +56,6 @@
 
 
 
-
-
-
-## Getting Started
-To get started for development, cd into `react-website/self-learning-app` and run``npm install` followed by `npm start` 
 
 
 ## Useful Resources

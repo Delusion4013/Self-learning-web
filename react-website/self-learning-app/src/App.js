@@ -1,7 +1,7 @@
 
 import './App.css';
 import LayoutGrid from './LayoutGrid';
-import currentLayout from './grid-layouts/test';
+import currentLayout from './grid-layouts/test.json';
 function App() {
   return (
     <div id="container">
@@ -10,6 +10,9 @@ function App() {
 			🏹 Quiver Bank
 			</h1>
 		</header>
+		{
+			console.log(currentLayout)
+		}
 		<LayoutGrid layout={currentLayout}>
 		</LayoutGrid>
     </div>
