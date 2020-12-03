@@ -10,11 +10,15 @@ from gym_envs.envs.webApp import WebApp
 class CustomEnv(gym.Env):
     
     def __init__(self):
+        #number of spaces in grid
+        gridSize = 9
+        #number of elements in grid
+        elementNum = 9
         self.webApp = WebApp()
         #Action space deterimines the number of potentail moves that can be made
         #In our case that would be the potential combinations in the grid
         #Add function later to calcualte combination but for now as it is a 
-        self.action_space = spaces.Discrete(comb(9,9))
+        self.action_space = spaces.Discrete(comb(gridSize,elementNum))
         #Representation of website would go here
         #Discuss with group how we shall represent it
         self.obsertvation_space = None
