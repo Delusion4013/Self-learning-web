@@ -20,6 +20,9 @@ class CustomEnv(gym.Env):
         self.obsertvation_space = None
     
     def reset(self):
+        # Delete the current web application instance and create a new one
+        del self.webApp
+        self.webApp = WebApp()
         #Establish with team what to do on "reset"
         observation = self.webApp.observe()
         return observation
