@@ -10,15 +10,17 @@ from gym_envs.envs.webApp import WebApp
 class CustomEnv(gym.Env):
     
     def __init__(self):
-        #number of spaces in grid
-        gridSize = 9
-        #number of elements in grid
-        elementNum = 9
+        #Initilisese webApp
         self.webApp = WebApp()
-        #Action space deterimines the number of potentail moves that can be made
-        #In our case that would be the potential combinations in the grid
-        #Add function later to calcualte combination but for now as it is a 
-        self.action_space = spaces.Discrete(comb(gridSize,elementNum))
+        #number of spaces in grid
+        gridSize = WebApp().getGridSize()
+        #number of elements in grid
+        elementNum = WebApp().getElementCount()
+        #Nubmer of combination of elementis in a grid size
+        combin = comb(gridSize,elementNum)
+        #Action space deterimines the number of potential moves that can be made
+        #In our case that would be the potential combinations of elements in the grid
+        self.action_space = spaces.Discrete(combin)
         #Representation of website would go here
         #Discuss with group how we shall represent it
         self.obsertvation_space = None
@@ -32,9 +34,17 @@ class CustomEnv(gym.Env):
         return observation
 
     def step(self, action):
-        self.webApp.action(action)
-        observation = self.webApp.observe()
-        reward = self.webApp.evaluate()
-        done = self.webApp(),is_done()
+        WebApp.action(action)
+        observation = WebApp.observe()
+        reward = WebApp.evaluate()
+        done = self.webApp(), self.webApp().is_done()
         return observation, reward, done, {}
+
+    def render(self):
+        elements = WebApp.observer(self)
+        for row in elements:
+            for column in row:
+                print(column, end="|")
+            print(end="\n")
+        return None
     

@@ -1,6 +1,7 @@
 import json
 
 class WebApp:
+    data = None
     #Initlise rl adapter
     #Loads json
     def __init__(self):
@@ -23,7 +24,37 @@ class WebApp:
     #Implement so it is done after one action or is never done
     def is_done(self):
         return False
-    #Returns the web config in a readable was 
+    #Returns as numbers in a 2d array 
     def observer(self):
-        return
-    
+        width , height =(getWidth(),getHeight())
+        elements=[[0]*width]*height
+        id = 0
+        for i in data['elements']:
+            id = id +1
+            #print("ID:", i['id']) 
+            #print("x:", i['rect']['x'])
+            #print("y:", i['rect']['y'])
+            xindex = i['rect']['x']-1
+            yindex = i['rect']['y']-1
+            #elements[yindex][xindex] = i['id']
+            elements[yindex][xindex] = id
+        return  elements
+
+    def getElementCount(self):
+        elementNum = 0
+        for element in data['elements']:
+            elementNum = elementNum + 1
+        return elementNum
+
+    def getGridSize(self):
+        width , height =(data['gridParams']['w'],data['gridParams']['h'])
+        gridSize = width * height
+        return gridSize
+
+    def getWidth(self):
+        width = data['gridParams']['w']
+        return width
+
+    def getHeight(self):
+        height = data['gridParams']['h']
+        return height
