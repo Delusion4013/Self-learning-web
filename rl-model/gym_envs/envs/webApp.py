@@ -13,12 +13,17 @@ class WebApp:
     def action(self):
         # based on the queue table, update the current website layout
         # and transfer the data back to adapter
-        return
+        for i in action_space:
+            if i==action
+                pass
+            #change layout accordingly.(how to realize?)
+        return #?because there is no stop point for current model, so there is no need to update or check if it fails
     #Evaluate calulates reward and in the prototype 
     #Talks to activity collector
     def evaluate(self):
         # Evaluate the current layout against user interaction and update queue table
-        return
+        reward = weight_mouseclick * (max_mouseclick-average_mouseclick) + weight_hovertime * (max_hover_time-average_hovertime)
+        return reward
     #Redundant as only one action needs to be made to be done
     #Our model is optimisation based not complition based
     #Implement so it is done after one action or is never done
