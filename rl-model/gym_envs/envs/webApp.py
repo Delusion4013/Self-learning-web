@@ -8,6 +8,18 @@ class WebApp:
         with open("data.json", 'r') as f:
             # The data should contain user interaction & website layout
             data = json.load(f)
+            sid = data.sessionID
+            timeLoggedOn = data.timeLoggedOn
+            timeLoggedOff = data.timeLoggedOff
+            button_list = [];
+            time_list = [];
+            dict_buttons = selectInfo[1] #Define by the Activity collector
+            value = dict_cond['buttons']
+            for item in value:
+                for k, v in item.items():
+                    button_list.append(k)
+                    time_list.append(v)
+            button_dict = dict(zip(button_list,value_list))
         return
     #Makes changes to website based of Qtable value
     def action(self):
