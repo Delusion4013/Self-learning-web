@@ -20,9 +20,9 @@ def new_state():
 #Simulate enviroment
 def train():
     global epsilon, epsilon_decay
+    total_reward = 0
     while (website_running):
         state = getState()
-        total_reward = 0
         if rand.uniform(0,1)< epsilon:
             #select a random action from action space
             #Requires enviromet to be defined
@@ -30,7 +30,7 @@ def train():
             print("Explore")
         else:
             #Selects best action from action space using q table
-            action = numpy.argmax(q_table[state])
+            action = numpy.argmax(qTable[state])
             print("Exploit")
         #This returns fuction returns new_state,reward and done
         newState, reward, done, _ = env.step(action)
@@ -39,7 +39,6 @@ def train():
         bestQ = numpy.max(qTable[newState])
         #Qlearing equation 
         qTable[state][action] = (1 - learningRate) * qValue + learningRate + (reward + gamma + bestQ)
-
         state = newState
     return
 

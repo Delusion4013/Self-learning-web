@@ -11,8 +11,8 @@ class WebApp:
             sid = data.sessionID
             timeLoggedOn = data.timeLoggedOn
             timeLoggedOff = data.timeLoggedOff
-            button_list = [];
-            time_list = [];
+            button_list = []
+            time_list = []
             dict_buttons = selectInfo[1] #Define by the Activity collector
             value = dict_cond['buttons']
             for item in value:
