@@ -1,0 +1,133 @@
+{
+    "sessions": [
+        {
+            "id": 0, 
+            "startTime" : 0,
+            "button1" : {
+                "id" : 0,
+                "time" : 0
+            },
+            "button2" : {
+                "id" : 0,
+                "time" : 0
+            },
+            "button3" : {
+                "id" : 0,
+                "time" : 0
+            },
+            "button4" : {
+                "id" : 0,
+                "time" : 0
+            },
+            "button5" : {
+                "id" : 0,
+                "time" : 0
+            },
+            "endTime" : 0
+        },
+
+        {
+            "id": 1, 
+            "startTime" : 0,
+            "button1" : {
+                "id" : 0,
+                "time" : 0
+            },
+            "button2" : {
+                "id" : 0,
+                "time" : 0
+            },
+            "button3" : {
+                "id" : 0,
+                "time" : 0
+            },
+            "button4" : {
+                "id" : 0,
+                "time" : 0
+            },
+            "button5" : {
+                "id" : 0,
+                "time" : 0
+            },
+            "endTime" : 0
+        },
+
+        {
+            "id": 2, 
+            "startTime" : 0,
+            "button1" : {
+                "id" : 0,
+                "time" : 0
+            },
+            "button2" : {
+                "id" : 0,
+                "time" : 0
+            },
+            "button3" : {
+                "id" : 0,
+                "time" : 0
+            },
+            "button4" : {
+                "id" : 0,
+                "time" : 0
+            },
+            "button5" : {
+                "id" : 0,
+                "time" : 0
+            },
+            "endTime" : 0
+        },
+
+        {
+            "id": 3, 
+            "startTime" : 0,
+            "button1" : {
+                "id" : 0,
+                "time" : 0
+            },
+            "button2" : {
+                "id" : 0,
+                "time" : 0
+            },
+            "button3" : {
+                "id" : 0,
+                "time" : 0
+            },
+            "button4" : {
+                "id" : 0,
+                "time" : 0
+            },
+            "button5" : {
+                "id" : 0,
+                "time" : 0
+            },
+            "endTime" : 0
+        },
+
+        {
+            "id": 4, 
+            "startTime" : 0,
+            "button1" : {
+                "id" : 0,
+                "time" : 0
+            },
+            "button2" : {
+                "id" : 0,
+                "time" : 0
+            },
+            "button3" : {
+                "id" : 0,
+                "time" : 0
+            },
+            "button4" : {
+                "id" : 0,
+                "time" : 0
+            },
+            "button5" : {
+                "id" : 0,
+                "time" : 0
+            },
+            "endTime" : 0
+        }
+    ]
+}
