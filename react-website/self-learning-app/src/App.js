@@ -6,7 +6,7 @@ function App() {
   return (
     <div id="container">
 		<header  className="title styled-box">
-			<h1 >
+			<h1>
 			🏹 Quiver Bank
 			</h1>
 		</header>
