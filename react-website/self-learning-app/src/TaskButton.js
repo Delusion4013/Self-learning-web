@@ -1,6 +1,9 @@
 
 
-
+/**
+ * A button in the LayoutGrid
+ * @param {Object} props 
+ */
 function TaskButton(props) {
 	let x1 = props.rect.x;
 	let y1 = props.rect.y;

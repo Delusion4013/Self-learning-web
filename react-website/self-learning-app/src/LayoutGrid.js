@@ -1,28 +1,32 @@
 
 import React, { Component } from 'react';
-import { render } from 'react-dom';
 import TaskButton from './TaskButton';
 import handleButton from "./handleEvents";
 // creates layout grid preset from test.json, gets start time
 //time stamp, creates events stack
+
+/**
+ * A component that stores a grid of buttons and records click events on those buttons as a session.
+ * When an element marked as the end goal is clicked, it downloads the current session in JSON format.
+ */
 class LayoutGrid extends Component {
 	constructor(props) {
 		super(props); //We're using inheritance here, super() applies the original constructor for the Component class
 		let gridParams = props.layout.gridParams;
 		this.state = {
 			elements: props.layout.elements,
-			taskButtons: [],
 			repeatColumns: `repeat(${gridParams.w}, 1fr)`,
 			repeatRows: `repeat(${gridParams.h}, 1fr)`,
 			session: {
 				sessionId : 0,
-					startTime: Date.now(),
-					endTime: 0,
-					events: []
-				}
+				startTime: Date.now(),
+				endTime: 0,
+				events: []
+			}
 		};
 
 	}
+
 	render() {
 		return (
 			<div className="layout-grid" style={{gridTemplateColumns: this.state.repeatColumns, gridTemplateRows: this.state.repeatRows}}>
@@ -31,7 +35,13 @@ class LayoutGrid extends Component {
 		);
 	}
 
-	
+	/**
+	 * Renders the TaskButton on the grid. Also handles the logic for downloading the session when a goal button is clicked.
+	 * @param {Object} element - The element parameters to create the TaskButton.
+	 * @param {String} element.id - The unique id for the element.
+	 * @param {Object} element.rect - Stores the elements width, height, x and y as multiples of the cell size.
+	 * @param {String} element.content - Whatever text to display for the element
+	 */
 	renderTaskButton(element) {
 		return (
 			<TaskButton 
@@ -47,7 +57,11 @@ class LayoutGrid extends Component {
 		)
 	}
 
-
+	/**
+	 * Adds an end time to the user session and then downloads it to a .json file.
+	 * @param {Object} session - The current recording of user events.
+	 * @param {Date} session.endTime - The time the user clicked on the goal element.
+	 */
 	downloadUserSession(session) {
 		session.endTime = Date.now(); // gets endtime time stamp
 		console.log(session);
