@@ -1,12 +1,12 @@
 
 import './App.css';
-import LayoutGrid from './LayoutGrid'; 
+import LayoutGrid from './components/LayoutGrid'; 
 import currentLayout from './grid-layouts/test.json'; //Can just omit the file type
 function App() {
   return (
     <div id="container">
 		<header  className="title styled-box">
-			<h1>
+			<h1 >
 			🏹 Quiver Bank
 			</h1>
 		</header>
