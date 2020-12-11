@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import TaskButton from './TaskButton';
 
-
+// creates layout grid preset from test.json, gets start time
+//time stamp, creates events stack
 class LayoutGrid extends Component {
 	constructor(props) {
 		super();
@@ -23,9 +24,9 @@ class LayoutGrid extends Component {
 	render() {
 		let onGoal = (buttonId) => {
 			let session = this.state.session;
-			session.endTime = Date.now();
+			session.endTime = Date.now(); // gets endtime time stamp
 			console.log(session);
-			
+			//writes session to file in format of dataOut.json file
 			const element = document.createElement("a");
 			const file = new Blob([JSON.stringify(session)], {type: 'text/plain'});
 			element.href = URL.createObjectURL(file);
