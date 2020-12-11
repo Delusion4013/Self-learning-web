@@ -15,7 +15,9 @@ The basic pipeline is:
    - Maps the array of objects to TaskButton elements
    - TaskButton takes the width, height, x and y as parameters and uses that to place itself on a css grid, and also `content` which is just some text to put in the button
 
- 
+ # JSDoc
+  - The comments use JSDoc, VS Code should support this by default, which you should be able to see if you hover over functions/parameters with JSDoc comments
+  - [Useful cheat sheet](https://devhints.io/jsdoc)
 
 
 # Misc Notes
