@@ -1,25 +1,13 @@
 import json
 
 class WebApp:
-    data = None
+    web = None
+    interactionData = None
     #Initlise rl adapter
     #Loads json
     def __init__(self):
-        with open("data.json", 'r') as f:
-            # The data should contain user interaction & website layout
-            data = json.load(f)
-            sid = data.sessionID
-            timeLoggedOn = data.timeLoggedOn
-            timeLoggedOff = data.timeLoggedOff
-            button_list = []
-            time_list = []
-            dict_buttons = selectInfo[1] #Define by the Activity collector
-            value = dict_cond['buttons']
-            for item in value:
-                for k, v in item.items():
-                    button_list.append(k)
-                    time_list.append(v)
-            button_dict = dict(zip(button_list,value_list))
+        self.initWeb()
+        self.initInteraction()
         return
     #Makes changes to website based of Qtable value
     def action(self):
@@ -41,13 +29,15 @@ class WebApp:
     #Our model is optimisation based not complition based
     #Implement so it is done after one action or is never done
     def is_done(self):
+        layout_file.close()
+        interaction_file.close()
         return False
     #Returns as numbers in a 2d array 
     def observer(self):
         width , height =(getWidth(),getHeight())
         elements=[[0]*width]*height
         id = 0
-        for i in data['elements']:
+        for i in web['elements']:
             id = id +1
             #print("ID:", i['id']) 
             #print("x:", i['rect']['x'])
@@ -60,19 +50,71 @@ class WebApp:
 
     def getElementCount(self):
         elementNum = 0
-        for element in data['elements']:
+        for element in web['elements']:
             elementNum = elementNum + 1
         return elementNum
 
     def getGridSize(self):
-        width , height =(data['gridParams']['w'],data['gridParams']['h'])
+        width , height =(web['gridParams']['w'],web['gridParams']['h'])
         gridSize = width * height
         return gridSize
 
     def getWidth(self):
-        width = data['gridParams']['w']
+        width = web['gridParams']['w']
         return width
 
     def getHeight(self):
-        height = data['gridParams']['h']
+        height = web['gridParams']['h']
         return height
+        
+    def getElement(self, elementID):
+         for element in web['elements']:
+            if(element['id'] == elementID):
+                return element
+
+    # This method is responsible for swapping two elements.
+    def swapElement(self, elementID_1, elementID_2):
+        e1 = self.getElement(elementID_1)
+        e2 = self.getElement(elementID_2)
+        temp_x = e1['rect']['x']
+        temp_y = e1['rect']['y']
+        e1['rect']['x'] = e2['rect']['x']
+        e1['rect']['y'] = e2['rect']['y']
+        e2['rect']['x'] = temp_x
+        e2['rect']['y'] = temp_y
+
+            
+    def initWeb(self):
+        # The data should contain user interaction & website layout
+        layout_file = open ('layout.json', 'r')
+        web = json.loads(layout_file.read())
+        return
+
+
+    def initInteraction(self):
+        interaction_file = open ('interaction.json', 'r')
+        interactionData = json.loads(interaction_file.read())
+        return
+
+    def getSessionID(self):
+        session_ID = interactionData['sessionId']
+        return session_ID
+
+    def getStartTime(self):
+        startTime = interactionData['startTime']
+        return startTime
+
+    def getEndTime(self):
+        endTime = interactionData['endTime']
+        return endTime
+
+    def getEventsCount(self):
+        count = 0
+        for events in interactionData['events']:
+            count = count + 1
+        return count
+
+    def getEvents(self):
+        events = interactionData['events']
+        return events
+
