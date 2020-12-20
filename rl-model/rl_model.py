@@ -15,7 +15,7 @@ def getState():
 
 #returns the new state 
 def new_state():
-    state = get_state()
+    state = getState()
     
 #Simulate enviroment
 def train():

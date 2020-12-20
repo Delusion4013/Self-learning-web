@@ -17,10 +17,15 @@ class CustomEnv(gym.Env):
         #number of elements in grid
         elementNum = WebApp().getElementCount()
         #Nubmer of combination of elementis in a grid size
-        combin = comb(gridSize,elementNum)
+        #combin = comb(gridSize,elementNum)
         #Action space deterimines the number of potential moves that can be made
         #In our case that would be the potential combinations of elements in the grid
-        self.action_space = spaces.Discrete(combin)
+        #self.action_space = spaces.Discrete(combin)
+        self.action_space =[]
+        for i in range(1,WebApp().getElementCount()):
+            for j in range(1,WebApp().getElementCount()):
+                if (i != j):
+                    self.action_space.append((i,j))
         #Representation of website would go here
         #Discuss with group how we shall represent it
         self.obsertvation_space = None
