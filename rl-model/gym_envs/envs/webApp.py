@@ -27,11 +27,9 @@ class WebApp:
     def action(self, action):
         # based on the queue table, update the current website layout
         # and transfer the data back to adapter
-        for i in action_space:
-            if i==action:
-                pass
-            #change layout accordingly.(how to realize?)
-        return 
+        firstElement = self.getElementID(action[0])
+        secondElement = self.getElementID(action[1])
+        self.swapElement(firstElement,secondElement)
         #because there is no stop point for current model, so there is no need to update or check if it fails
     #Evaluate calulates reward and in the prototype 
     #Talks to activity collector
@@ -70,6 +68,13 @@ class WebApp:
         for element in self.web['elements']:
             elementNum = elementNum + 1
         return elementNum
+
+    def getElementID(self,intID):
+        id = 0
+        for i in self.web['elements']:
+            id = id +1
+            if intID == id:
+                    return i['id']
 
     def getGridSize(self):
         width , height =(self.web['gridParams']['w'],self.web['gridParams']['h'])
