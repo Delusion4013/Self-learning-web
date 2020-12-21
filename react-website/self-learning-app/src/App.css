@@ -1,0 +1,87 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap');
+
+:root {
+	--grid-padding: 10px;
+	--main-bg-dark-color:	#24292e;
+	--main-color: #d73a49;
+	--main-font: 'Poppins', sans-serif;
+
+}
+
+html, body {
+	height: 100%;
+	
+}
+#root {
+	background-color: var(--main-bg-dark-color);
+}
+
+#container {
+	width: fit-content;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+}
+
+
+.layout-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(4,1fr);
+
+	align-items: center;
+	justify-items: center;
+	width: 800px;
+	height: 800px;
+
+
+}
+
+.styled-box {
+	font-family: var(--main-font);
+	font-weight: normal;
+	padding: 20px;
+	margin: 10px;
+	border-radius: 1px;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	color: white;
+	background-color: var(--main-color);
+	/* parameters from https://getcssscan.com/css-box-shadow-examples */
+}
+
+.task-button {
+	border: none;
+	cursor: pointer;	
+	width: 90%;
+	height: 90%;
+	font-weight: bold;
+	font-size: 20px;
+	transition: 0.3s;
+}
+
+.title {
+	background:none;
+
+
+	color: white;
+	box-shadow: none;
+}
+
+
+
+button:hover {
+	filter: brightness(80%);
+}
+
+button:focus {
+	border: none;
+	outline: none;
+}
+
+button:active {
+    transform: scale(0.99);
+}
+

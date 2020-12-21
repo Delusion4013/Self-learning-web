@@ -1,4 +1,4 @@
-# **IPSOS:** A Self Learning Application
+# **Ideagen:** A Self Learning Application
 ## Project Brief 
 
 * The idea is to have a self-learning algorithm that will move elements on a webpage to optimize user experience by reducing time spent on a page to complete a goal 

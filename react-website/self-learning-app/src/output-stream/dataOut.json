@@ -1,0 +1,12 @@
+{
+	"sessionId" : 0,
+	"startTime" : 0,
+	"endTime" : 0,
+	"inputs": [
+		{
+
+			"buttonId": 0,
+			"time" :0
+		}
+	]
+}
