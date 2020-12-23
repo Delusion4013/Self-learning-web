@@ -1,2 +1,2 @@
-from gym_envs.envs.custom_envs import *
-from gym_envs.envs.custom_envs import WebApp
+from gym_envs.envs.custom_env import *
+from gym_envs.envs.webApp import WebApp
