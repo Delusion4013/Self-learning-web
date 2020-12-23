@@ -1,10 +1,14 @@
 # React App
 
 ## Getting Started
-To get started for development, cd into `react-website/self-learning-app` and run``npm install` followed by `npm start` 
-
+To get started for development, cd into `react-website/self-learning-app` and run `npm install` followed by `npm start` 
+For the recording capturer, `npm install` in  `recording-capturer/` and `npm start`to run
 
  - The app currently runs using create-react-app which is a node.js program that just gives you a simple local http server to run a website
+
+
+
+
 
 The basic pipeline is:
  - `index.html` loads

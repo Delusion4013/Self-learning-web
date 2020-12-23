@@ -50,8 +50,8 @@ class LayoutGrid extends Component {
 				rect={element.rect}
 				onClick={(e) => {
 						handleButton(e, this.state.session, element.id);
-						if (element.endGoal) this.downloadUserSession(this.state.session);
-					/*if (element.endGoal) {
+						//if (element.endGoal) this.downloadUserSession(this.state.session);
+					if (element.endGoal) {
 						const requestOptions = {
 							method: 'POST',
 							headers: { 'Content-Type': 'application/json' },
@@ -59,7 +59,7 @@ class LayoutGrid extends Component {
 						};
 						fetch("http://localhost:3005/send", requestOptions)
 							.then(res => console.log(res));
-					}*/
+					}
 					}}> 
 				{element.content}
 			</TaskButton>
