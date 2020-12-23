@@ -5,6 +5,8 @@ class WebApp:
     interactionData = None
     layout_file = None
     interaction_file = None
+    gridPath = 'team28_project/react-website/self-learning-app/src/grid-layouts/'
+    activityPath = ''
     #Initlise rl adapter
     #Loads json
     def __init__(self):
@@ -14,12 +16,12 @@ class WebApp:
 
     def initWeb(self):
         # The data should contain user interaction & website layout
-        layout_file = open ('layout.json', 'r')
+        layout_file = open (self.gridPath +'test.json', 'r')
         self.web = json.loads(layout_file.read())
         return
 
     def initInteraction(self):
-        interaction_file = open ('interaction.json', 'r')
+        interaction_file = open (self.activityPath +'dataOut.json', 'r')
         self.interactionData = json.loads(interaction_file.read())
         return
 
