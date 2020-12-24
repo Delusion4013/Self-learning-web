@@ -6,7 +6,7 @@ class WebApp:
     layout_file = None
     interaction_file = None
     gridPath = 'team28_project/react-website/self-learning-app/src/grid-layouts/'
-    activityPath = ''
+    activityPath = 'team28_project/react-website/self-learning-app/src/output-stream'
     #Initlise rl adapter
     #Loads json
     def __init__(self):
