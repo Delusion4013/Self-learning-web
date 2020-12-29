@@ -4,7 +4,7 @@ import math
 import random
 import random as rand
 import gym
-import gym_envs
+from . import gym_envs
 
 website_running = True
 #For the prototype rl_model should recive an input of the web configration "State" and the rewards for that state base of activity collector
