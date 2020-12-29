@@ -1,12 +1,12 @@
 import json
-
+from pathlib import Path
 class WebApp:
     web = None
     interactionData = None
     layout_file = None
     interaction_file = None
-    gridPath = 'team28_project/react-website/self-learning-app/src/grid-layouts/'
-    activityPath = 'team28_project/react-website/self-learning-app/src/output-stream'
+    gridPath = Path(__file__).parent / "../../../react-website/self-learning-app/src/grid-layouts/test.json"
+    activityPath = Path(__file__).parent /"../../../react-website/self-learning-app/src/output-stream/dataOut.json"
     #Initlise rl adapter
     #Loads json
     def __init__(self):
@@ -16,13 +16,13 @@ class WebApp:
 
     def initWeb(self):
         # The data should contain user interaction & website layout
-        layout_file = open (self.gridPath +'test.json', 'r')
-        self.web = json.loads(layout_file.read())
+        with self.gridPath.open() as f:
+            self.web = json.load(f)
         return
 
     def initInteraction(self):
-        interaction_file = open (self.activityPath +'dataOut.json', 'r')
-        self.interactionData = json.loads(interaction_file.read())
+        with self.gridPath.open() as f:
+            self.interactionData = json.load(f)
         return
 
     #Makes changes to website based of Qtable value
