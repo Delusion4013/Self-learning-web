@@ -4,7 +4,7 @@ import math
 import random
 import random as rand
 import gym
-from . import gym_envs
+#import gym_envs
 
 website_running = True
 #For the prototype rl_model should recive an input of the web configration "State" and the rewards for that state base of activity collector
@@ -45,7 +45,7 @@ def train():
 
 if __name__ == "__main__":
     #Enviroment
-    env = gym.make("Webapp")
+    env = gym.make("Webapp-v0")
     #Assuming grid is 3 by 3 for website
     observation_size = [3,3]
     #Exploration vs exploit value if one will always explore
