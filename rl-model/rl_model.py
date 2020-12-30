@@ -46,8 +46,6 @@ def train():
 if __name__ == "__main__":
     #Enviroment
     env = gym.make("Webapp-v0")
-    #Assuming grid is 3 by 3 for website
-    observation_size = [3,3]
     #Exploration vs exploit value if one will always explore
     epsilon = 1
     #How quickly the epsion value changes
@@ -57,4 +55,4 @@ if __name__ == "__main__":
     #Discount factor
     gamma = 0.7
     #Initlises q tabl vaues to zero
-    qTable = numpy.zeros(observation_size)
+    qTable = numpy.zeros(env.action_space.n)

@@ -21,14 +21,18 @@ class CustomEnv(gym.Env):
         #Action space deterimines the number of potential moves that can be made
         #In our case that would be the potential combinations of elements in the grid
         #self.action_space = spaces.Discrete(combin)
-        self.action_space =[]
+        
+        self.obsertvation_space =[]
+        actionCount= 0;
         for i in range(1,WebApp().getElementCount()):
             for j in range(1,WebApp().getElementCount()):
                 if (i != j):
-                    self.action_space.append((i,j))
+                    self.obsertvation_space.append((i,j))
+                    actionCount += 1
+        self.action_space = spaces.Discrete(actionCount);
         #Representation of website would go here
         #Discuss with group how we shall represent it
-        self.obsertvation_space = None
+        
     
     def reset(self):
         # Delete the current web application instance and create a new one
