@@ -1,5 +1,7 @@
 import json
+import numpy
 from pathlib import Path
+import itertools
 class WebApp:
     web = None
     interactionData = None
@@ -29,10 +31,19 @@ class WebApp:
     def action(self, action):
         # based on the queue table, update the current website layout
         # and transfer the data back to adapter
-        firstElement = self.getElementID(action[0])
-        secondElement = self.getElementID(action[1])
-        self.swapElement(firstElement,secondElement)
         #because there is no stop point for current model, so there is no need to update or check if it fails
+        #Creates list of IDs
+        element = self.getPair(action)
+        firstElement = self.getElementID(element[0])
+        secondElement = self.getElementID(element[1])
+        self.swapElement(firstElement,secondElement)
+        return
+
+    def getPair(self,action):
+        listOfIDs = numpy.arange(1,self.getElementCount()+1)
+        pairs = [pair for pair in itertools.combinations(listOfIDs, 2)]
+        return pairs[action]
+
     #Evaluate calulates reward and in the prototype 
     #Talks to activity collector
     def evaluate(self):
