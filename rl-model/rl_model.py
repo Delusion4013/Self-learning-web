@@ -19,7 +19,7 @@ def new_state():
     state = getState()
     
 #Simulate environment and trains rl model
-def train():
+def train(epsilon,epsilon_decay,learningRate,gamma):
     website_running = True
     while (website_running):
         state = getState()
@@ -40,6 +40,8 @@ def train():
         qTable[state][action] = (1 - learningRate) * qValue + learningRate + (reward + gamma + bestQ)
         state = newState
         env.render()
+        #Decays epsilon
+        epsilon *= epsilon_decay
     return
 
 if __name__ == "__main__":
@@ -59,6 +61,6 @@ if __name__ == "__main__":
     #Number of observation values
     obs_size = obsNumber * len(env.observation_space.high)
     #Initialise q table values to zero
-    qTable = numpy.zeros(obs_size + [env.action_space.n])
-    train()
+    qTable = numpy.zeros(obs_size + int(env.action_space.n))
+    train(epsilon,epsilon_decay,learningRate,gamma)
     env.close()
