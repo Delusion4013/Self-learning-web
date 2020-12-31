@@ -23,7 +23,7 @@ class WebApp:
         return
 
     def initInteraction(self):
-        with self.gridPath.open() as f:
+        with self.activityPath.open() as f:
             self.interactionData = json.load(f)
         return
 
@@ -31,9 +31,6 @@ class WebApp:
     def action(self, action):
         # based on the queue table, update the current website layout
         # and transfer the data back to adapter
-        firstElement = self.getElementID(action/4)
-        secondElement = self.getElementID(action%4)
-        self.swapElement(firstElement,secondElement)
         #because there is no stop point for current model, so there is no need to update or check if it fails
         #Creates list of IDs
         element = self.getPair(action)
@@ -53,8 +50,9 @@ class WebApp:
         # Evaluate the current layout against user interaction and update queue table
         # reward = weight_mouseclick * (max_mouseclick-average_mouseclick) + weight_hovertime * (max_hover_time-average_hovertime)
         timeSpent = self.getDiffTime()
-        c = 1
-        reward = 1 / timeSpent * c
+        # print("Time spent: "+str(timeSpent))
+        c = -1
+        reward = timeSpent * c
         return reward
     #Redundant as only one action needs to be made to be done
     #Our model is optimisation based not complition based
@@ -132,6 +130,9 @@ class WebApp:
         return session_ID
 
     def getDiffTime(self):
+        # print("startTime: "+str(self.getStartTime))
+        # print("endTime: "+str(self.getEndTime))
+        # print(type(self.getEndTime))
         return self.getEndTime() - self.getStartTime()
 
     def getStartTime(self):

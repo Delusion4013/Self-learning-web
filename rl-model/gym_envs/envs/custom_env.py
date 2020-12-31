@@ -37,7 +37,7 @@ class CustomEnv(gym.Env):
         self.webApp.action(action)
         observation = self.webApp.observe()
         reward = self.webApp.evaluate()
-        done = self.webApp(), self.webApp().is_done()
+        done = False
         return observation, reward, done, {}
 
     def render(self):
