@@ -18,13 +18,13 @@ class WebApp:
 
     def initWeb(self):
         # The data should contain user interaction & website layout
-        with self.gridPath.open() as f:
-            self.web = json.load(f)
+        with self.gridPath.open() as layout_file:
+            self.web = json.load(layout_file)
         return
 
     def initInteraction(self):
-        with self.activityPath.open() as f:
-            self.interactionData = json.load(f)
+        with self.activityPath.open() as interaction_file:
+            self.interactionData = json.load(interaction_file)
         return
 
     #Makes changes to website based of Qtable value
@@ -49,10 +49,10 @@ class WebApp:
     def evaluate(self):
         # Evaluate the current layout against user interaction and update queue table
         # reward = weight_mouseclick * (max_mouseclick-average_mouseclick) + weight_hovertime * (max_hover_time-average_hovertime)
+        # print(self.interactionData['startTime'])
         timeSpent = self.getDiffTime()
-        # print("Time spent: "+str(timeSpent))
-        c = -1
-        reward = timeSpent * c
+        c = 1
+        reward = 1 / timeSpent
         return reward
     #Redundant as only one action needs to be made to be done
     #Our model is optimisation based not complition based
@@ -130,17 +130,17 @@ class WebApp:
         return session_ID
 
     def getDiffTime(self):
-        # print("startTime: "+str(self.getStartTime))
-        # print("endTime: "+str(self.getEndTime))
-        # print(type(self.getEndTime))
-        return self.getEndTime() - self.getStartTime()
-
+        timeSpent = int(self.getEndTime() - self.getStartTime())
+        return timeSpent
+    
     def getStartTime(self):
-        startTime = self.interactionData['startTime']
+        startTime = int(self.interactionData['startTime'])
+        print("start Time:" + str(startTime))
         return startTime
 
     def getEndTime(self):
-        endTime = self.interactionData['endTime']
+        endTime = int(self.interactionData['endTime'])
+        print("end Time:" + str(endTime))
         return endTime
 
     def getEventsCount(self):
