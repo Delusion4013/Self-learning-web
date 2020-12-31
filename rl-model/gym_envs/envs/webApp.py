@@ -65,6 +65,11 @@ class WebApp:
             elements[yindex][xindex] = id
         return  elements
 
+    def observe(self):
+        hovertime=self.getDiffTime
+        mouseclick=self.getElementCount
+        return (hovertime,mouseclick)
+
     def getElementCount(self):
         elementNum = 0
         for element in self.web['elements']:

@@ -10,25 +10,19 @@ from gym_envs.envs.webApp import WebApp
 class CustomEnv(gym.Env):
     
     def __init__(self):
-        #Initilisese webApp
+        #Initialise webApp
         self.webApp = WebApp()
         #number of spaces in grid
         gridSize = WebApp().getGridSize()
         #number of elements in grid
         elementNum = WebApp().getElementCount()
-        #Nubmer of combination of elementis in a grid size
-        #combin = comb(gridSize,elementNum)
-        #Action space deterimines the number of potential moves that can be made
-        #In our case that would be the potential combinations of elements in the grid
-        #self.action_space = spaces.Discrete(combin)
-        self.action_space =[]
-        for i in range(1,WebApp().getElementCount()):
-            for j in range(1,WebApp().getElementCount()):
-                if (i != j):
-                    self.action_space.append((i,j))
+        #This is a equation to calculate the number of unique pairs
+        #This can be done using math.comb(elementNum,2) however we know it a pair it can be so can be simplified 
+        combNumberOfPairs = (elementNum*(elementNum-1))/2
+        self.action_space = spaces.Discrete(combNumberOfPairs);
+        self.observation_space=spaces.Box((0,0),(100,100),dtype=int)
         #Representation of website would go here
         #Discuss with group how we shall represent it
-        self.obsertvation_space = None
     
     def reset(self):
         # Delete the current web application instance and create a new one
