@@ -29,8 +29,8 @@ class WebApp:
     def action(self, action):
         # based on the queue table, update the current website layout
         # and transfer the data back to adapter
-        firstElement = self.getElementID(action[0])
-        secondElement = self.getElementID(action[1])
+        firstElement = self.getElementID(action/4)
+        secondElement = self.getElementID(action%4)
         self.swapElement(firstElement,secondElement)
         #because there is no stop point for current model, so there is no need to update or check if it fails
     #Evaluate calulates reward and in the prototype 
