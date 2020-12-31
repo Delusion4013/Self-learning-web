@@ -55,7 +55,6 @@ if __name__ == "__main__":
     learningRate = 0.2
     #Discount factor
     gamma = 0.7
-    
     #Number of observation types (for prototype is only mouse click and time spent of the website)
     obsNumber = 2
     #Number of observation values
