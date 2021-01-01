@@ -41,7 +41,9 @@ def train(epsilon,epsilon_decay,learningRate,gamma):
         state = newState
         env.render()
         #Decays epsilon
-        epsilon *= epsilon_decay
+        if(epsilon > 0.2):
+            epsilon *= epsilon_decay
+        print(epsilon)
     return
 
 if __name__ == "__main__":
