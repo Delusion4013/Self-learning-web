@@ -1,7 +1,9 @@
 import json
 import numpy
 from pathlib import Path
-import itertools
+from math import comb
+from itertools import permutations
+from itertools import combinations
 class WebApp:
     web = None
     interactionData = None
@@ -9,11 +11,13 @@ class WebApp:
     interaction_file = None
     gridPath = Path(__file__).parent / "../../../react-website/self-learning-app/src/grid-layouts/test.json"
     activityPath = Path(__file__).parent /"../../../react-website/self-learning-app/src/output-stream/dataOut.json"
+    states = []
     #Initlise rl adapter
     #Loads json
     def __init__(self):
         self.initWeb()
         self.initInteraction()
+        self.initStates()
         return
 
     def initWeb(self):
@@ -25,6 +29,12 @@ class WebApp:
     def initInteraction(self):
         with self.activityPath.open() as interaction_file:
             self.interactionData = json.load(interaction_file)
+        return
+    def initStates(self):
+        initialState = []
+        for element in self.web['elements']:
+            initialState.append(element)
+        self.states = [state for state in permutations(initialState, len(initialState))]
         return
 
     #Makes changes to website based of Qtable value
@@ -41,7 +51,7 @@ class WebApp:
 
     def getPair(self,action):
         listOfIDs = numpy.arange(1,self.getElementCount()+1)
-        pairs = [pair for pair in itertools.combinations(listOfIDs, 2)]
+        pairs = [pair for pair in combinations(listOfIDs, 2)]
         return pairs[action]
 
     #Evaluate calulates reward and in the prototype 
@@ -75,12 +85,27 @@ class WebApp:
             yindex = i['rect']['y']-1
             #elements[yindex][xindex] = i['id']
             elements[yindex][xindex] = id
-        return  elements
+        return elements
+
+    def getCurrentState(self):
+        currentState = []
+        for element in self.web['elements']:
+            currentState.append(element)
+        return currentState
+
+    def getStateID(self,currentState):
+        stateID = 0
+        tupleState = tuple(currentState)
+        for stateID in range(len(self.states)):
+            if tupleState == self.states[stateID]:
+                return stateID
+            stateID += 1
+
 
     def observe(self):
-        hovertime=self.getDiffTime
-        mouseclick=self.getElementCount
-        return (hovertime,mouseclick)
+        # hovertime=self.getDiffTime
+        # mouseclick=self.getElementCount
+        return self.getStateID(self.getCurrentState())
 
     def getElementCount(self):
         elementNum = 0
@@ -135,12 +160,12 @@ class WebApp:
     
     def getStartTime(self):
         startTime = int(self.interactionData['startTime'])
-        print("start Time:" + str(startTime))
+        # print("start Time:" + str(startTime))
         return startTime
 
     def getEndTime(self):
         endTime = int(self.interactionData['endTime'])
-        print("end Time:" + str(endTime))
+        # print("end Time:" + str(endTime))
         return endTime
 
     def getEventsCount(self):

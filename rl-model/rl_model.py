@@ -21,8 +21,8 @@ def new_state():
 #Simulate environment and trains rl model
 def train(epsilon,epsilon_decay,learningRate,gamma):
     website_running = True
+    state = getState()
     while (website_running):
-        state = getState()
         if rand.uniform(0,1)< epsilon:
             #select a random action from action space
             #Requires environment to be defined
@@ -32,7 +32,7 @@ def train(epsilon,epsilon_decay,learningRate,gamma):
             #Selects best action from action space using q table
             action = numpy.argmax(qTable[state])
             print("Exploit")
-        #This returns function returns new_state,reward and done
+        # #This returns function returns new_state,reward and done
         newState, reward, website_running, _ = env.step(action)
         qValue = qTable[state][action]
         bestQ = numpy.max(qTable[newState])
@@ -56,10 +56,14 @@ if __name__ == "__main__":
     #Discount factor
     gamma = 0.7
     #Number of observation types (for prototype is only mouse click and time spent of the website)
-    obsNumber = 2
+    print(env.observation_space.high)
+    print(env.observation_space.low)
     #Number of observation values
-    obs_size = obsNumber * len(env.observation_space.high)
+    obs_size = [int(env.observation_space.high)] * len(env.observation_space.high)
+    print(obs_size)
     #Initialise q table values to zero
-    qTable = numpy.zeros(obs_size + int(env.action_space.n))
+    action_size=[int(env.action_space.n)]
+    qTable = numpy.zeros(obs_size + action_size)
+    
     train(epsilon,epsilon_decay,learningRate,gamma)
     env.close()

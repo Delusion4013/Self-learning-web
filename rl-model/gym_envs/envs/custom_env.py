@@ -3,6 +3,7 @@ import gym
 from gym import spaces
 import numpy
 from math import comb
+from math import perm
 #Here I import information from RL adapter
 from gym_envs.envs.webApp import WebApp
 
@@ -21,7 +22,8 @@ class CustomEnv(gym.Env):
         combNumberOfPairs = (elementNum*(elementNum-1))/2
         self.action_space = spaces.Discrete(combNumberOfPairs);
         #Fixed type error but not sure what value 100 means
-        self.observation_space=spaces.Box(numpy.array([0, 0]), numpy.array([100, 100]), dtype=numpy.int)
+        permCount = perm(self.webApp.getElementCount(),self.webApp.getElementCount())
+        self.observation_space=spaces.Box(numpy.array([0]), numpy.array([permCount]), dtype=numpy.int)
         #Representation of website would go here
         #Discuss with group how we shall represent it
     
@@ -40,8 +42,8 @@ class CustomEnv(gym.Env):
         done = False
         return observation, reward, done, {}
 
-    def render(self):
-        elements = WebApp.observer(self)
+    def render(self, mode="human",close=False):
+        elements = self.webApp.observer()
         for row in elements:
             for column in row:
                 print(column, end="|")
