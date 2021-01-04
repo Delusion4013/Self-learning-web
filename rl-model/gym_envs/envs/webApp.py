@@ -48,6 +48,7 @@ class WebApp:
         firstElement = self.getElementID(element[0])
         secondElement = self.getElementID(element[1])
         self.swapElement(firstElement,secondElement)
+        self.writeBack()
         return
 
     def getPair(self,action):
@@ -116,9 +117,9 @@ class WebApp:
     def getElementID(self,intID):
         id = 0
         for i in self.web['elements']:
-            id = id +1
             if intID == id:
-                    return i['id']
+                return i['id']
+            id = id +1
 
     def getGridSize(self):
         width , height =(self.web['gridParams']['w'],self.web['gridParams']['h'])
@@ -148,7 +149,6 @@ class WebApp:
         e1['rect']['y'] = e2['rect']['y']
         e2['rect']['x'] = temp_x
         e2['rect']['y'] = temp_y
-        self.writeBack()
         return
 
     def getSessionID(self):
