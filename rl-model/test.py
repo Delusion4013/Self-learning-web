@@ -7,7 +7,7 @@ import random as rand
 import gym
 import gym_envs
 from rl_model import Rlmodel
-from gym_envs import WebApp
+from gym_envs.envs.webApp import WebApp
 class TestCustom_Env(unittest.TestCase):
 
     def testInit(self):
