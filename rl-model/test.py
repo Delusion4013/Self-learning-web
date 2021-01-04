@@ -6,6 +6,7 @@ import random
 import random as rand
 import gym
 import gym_envs
+import json
 from rl_model import Rlmodel
 from gym_envs.envs.webApp import WebApp
 class TestCustom_Env(unittest.TestCase):
@@ -91,6 +92,18 @@ class TestWebApp(unittest.TestCase):
     def setUp(self) -> None:
         self.webApp = WebApp()
         return super().setUp()
+    
+    def testInitWeb(self):
+        with self.webApp.gridPath.open() as layout_file:
+            testWeb = json.load(layout_file)
+        self.webApp.initWeb()
+        self.assertEquals(testWeb, self.web)
+
+    def testInitWeb(self):
+        with self.webApp.activityPath.open() as interaction_file:
+            testInteraction = json.load(interaction_file)
+        self.webApp.initInteraction()
+        self.assertEquals(testInteraction, self.web)
 
     def testGetElementCount(self):
         self.assertEqual(4,self.webApp.getElementCount())
