@@ -127,6 +127,11 @@ class TestWebApp(unittest.TestCase):
     def testGetEvents(self):
         self.assertEqual(self.webApp.interactionData['events'], self.webApp.getEvents())
 
+    def testSwapElement(self):
+        self.webApp.swapElement('singIn', 'singOut')
+        self.assertEqual(2,self.webApp.web['elements'][0]['rect']['y'])
+        self.assertEqual(1,self.webApp.web['elements'][1]['rect']['y'])
+
 if __name__ == '__main__':
     env = gym.make("Webapp-v0")
     unittest.main()
