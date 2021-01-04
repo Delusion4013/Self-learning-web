@@ -148,6 +148,7 @@ class WebApp:
         e1['rect']['y'] = e2['rect']['y']
         e2['rect']['x'] = temp_x
         e2['rect']['y'] = temp_y
+        self.writeBack()
         return
 
     def getSessionID(self):
@@ -178,3 +179,6 @@ class WebApp:
         events = self.interactionData['events']
         return events
 
+    def writeBack(self):
+        with self.gridPath.open() as layout_file:
+            json.dump(self.web, layout_file)
