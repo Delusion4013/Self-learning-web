@@ -182,3 +182,4 @@ class WebApp:
     def writeBack(self):
         with self.gridPath.open() as layout_file:
             json.dump(self.web, layout_file)
+        return

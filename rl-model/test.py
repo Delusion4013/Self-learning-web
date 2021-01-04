@@ -87,6 +87,7 @@ class TestRlModel(unittest.TestCase):
         for row in initalQtable:
             for value in row:
                 self.assertEqual(value,0)
+                
 class TestWebApp(unittest.TestCase):
     webApp = None
     def setUp(self) -> None:
