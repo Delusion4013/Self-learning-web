@@ -20,7 +20,7 @@ class CustomEnv(gym.Env):
         #This is a equation to calculate the number of unique pairs
         #This can be done using math.comb(elementNum,2) however we know it a pair it can be so can be simplified 
         combNumberOfPairs = (elementNum*(elementNum-1))/2
-        self.action_space = spaces.Discrete(combNumberOfPairs);
+        self.action_space = spaces.Discrete(combNumberOfPairs)
         #Fixed type error but not sure what value 100 means
         permCount = perm(self.webApp.getElementCount(),self.webApp.getElementCount())
         self.observation_space=spaces.Box(numpy.array([0]), numpy.array([permCount]), dtype=numpy.int)
@@ -49,4 +49,13 @@ class CustomEnv(gym.Env):
                 print(column, end="|")
             print(end="\n")
         return None
+
+    def getWebApp(self):
+        return self.webApp
+
+    def getActionSpace(self):
+        return self.action_space
+
+    def getObservationSpace(self):
+        return self.observation_space
     
