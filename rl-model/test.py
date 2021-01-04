@@ -106,6 +106,13 @@ class TestWebApp(unittest.TestCase):
         self.webApp.initInteraction()
         self.assertEqual(testInteraction, self.webApp.interactionData)
 
+    def testSwapElement(self):
+        temp1 = self.webApp.web['elements'][0]['rect']['y']   
+        temp2 = self.webApp.web['elements'][1]['rect']['y']   
+        self.webApp.swapElement('signIn', 'signOut')
+        self.assertEqual(temp2,self.webApp.web['elements'][0]['rect']['y'])
+        self.assertEqual(temp1,self.webApp.web['elements'][1]['rect']['y'])
+
     def testGetElementCount(self):
         self.assertEqual(4,self.webApp.getElementCount())
 
@@ -140,11 +147,6 @@ class TestWebApp(unittest.TestCase):
 
     def testGetEvents(self):
         self.assertEqual(self.webApp.interactionData['events'], self.webApp.getEvents())
-
-    def testSwapElement(self):
-        self.webApp.swapElement('signIn', 'signOut')
-        self.assertEqual(2,self.webApp.web['elements'][0]['rect']['y'])
-        self.assertEqual(1,self.webApp.web['elements'][1]['rect']['y'])
 
 if __name__ == '__main__':
     env = gym.make("Webapp-v0")

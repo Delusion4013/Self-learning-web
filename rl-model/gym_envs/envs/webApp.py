@@ -48,7 +48,6 @@ class WebApp:
         firstElement = self.getElementID(element[0])
         secondElement = self.getElementID(element[1])
         self.swapElement(firstElement,secondElement)
-        self.writeBack()
         return
 
     def getPair(self,action):
@@ -149,6 +148,7 @@ class WebApp:
         e1['rect']['y'] = e2['rect']['y']
         e2['rect']['x'] = temp_x
         e2['rect']['y'] = temp_y
+        self.writeBack()
         return
 
     def getSessionID(self):
@@ -180,6 +180,6 @@ class WebApp:
         return events
 
     def writeBack(self):
-        with self.gridPath.open() as layout_file:
-            json.dump(self.web, layout_file)
+        with open(self.gridPath, 'w') as layout_file:
+            json.dump(self.web, layout_file, indent=4, separators=(',', ':'))
         return
