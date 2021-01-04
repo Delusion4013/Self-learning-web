@@ -9,6 +9,15 @@ import gym_envs
 from rl_model import Rlmodel
 class TestCustom_Env(unittest.TestCase):
 
+    def testInit(self):
+        #test if webApp is initialized and if other object is None
+        webApp=env.getWebApp()
+        self.assertIsNotNone(webApp)
+        self.assertLess(0,webApp.getGridSize())
+        self.assertLess(0,webApp.getElementCount())
+        self.assertIsNotNone(env.getActionSpace())
+        self.assertIsNotNone(env.getObservationSpace())
+
     def testReset(self):
         #test if the reset function in custom_env.py can return an integer stand for layout properly
         self.assertEqual(0,env.reset())
@@ -28,6 +37,7 @@ class TestCustom_Env(unittest.TestCase):
     def testRender(self):
         #test if render function return None, by the way, after finishing this test I know python test can print
         self.assertEqual(None,env.render())
+
 class TestRlModel(unittest.TestCase):
     rlmodel = None
     def setUp(self) -> None:
