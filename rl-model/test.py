@@ -104,14 +104,14 @@ class TestWebApp(unittest.TestCase):
         with self.webApp.activityPath.open() as interaction_file:
             testInteraction = json.load(interaction_file)
         self.webApp.initInteraction()
-        self.assertEquals(testInteraction, self.webApp.interactionData)
+        self.assertEqual(testInteraction, self.webApp.interactionData)
 
     def testGetElementCount(self):
         self.assertEqual(4,self.webApp.getElementCount())
 
     def testGetElementID(self):
         intID = 2
-        self.assertEqual(self.webApp.web['elements'][intID]['id'], self.webApp.getElementID(intID))
+        self.assertEqual(self.webApp.web['elements'][intID-1]['id'], self.webApp.getElementID(intID))
 
     def testGetGridSize(self):
         self.assertEqual(25, self.webApp.getGridSize())

@@ -117,9 +117,9 @@ class WebApp:
     def getElementID(self,intID):
         id = 0
         for i in self.web['elements']:
+            id = id +1
             if intID == id:
                 return i['id']
-            id = id +1
 
     def getGridSize(self):
         width , height =(self.web['gridParams']['w'],self.web['gridParams']['h'])
