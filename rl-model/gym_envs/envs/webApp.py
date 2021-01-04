@@ -30,6 +30,7 @@ class WebApp:
         with self.activityPath.open() as interaction_file:
             self.interactionData = json.load(interaction_file)
         return
+
     def initStates(self):
         initialState = []
         for element in self.web['elements']:
@@ -100,7 +101,6 @@ class WebApp:
             if tupleState == self.states[stateID]:
                 return stateID
             stateID += 1
-
 
     def observe(self):
         # hovertime=self.getDiffTime

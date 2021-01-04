@@ -7,6 +7,7 @@ import random as rand
 import gym
 import gym_envs
 from rl_model import Rlmodel
+from gym_envs import WebApp
 class TestCustom_Env(unittest.TestCase):
 
     def testReset(self):
@@ -63,6 +64,47 @@ class TestRlModel(unittest.TestCase):
                     notZero = True
                     break
         self.assertTrue(notZero)
+
+class TestWebApp(unittest.TestCase):
+    webApp = None
+    def setUp(self) -> None:
+        self.webApp = WebApp()
+        return super().setUp()
+
+    def testGetElementCount(self):
+        self.assertEqual(4,self.webApp.getElementCount())
+
+    def testGetElementID(self):
+        intID = 2
+        self.assertEqual(self.webApp.web['elements'][intID], self.webApp.getElementID(intID))
+
+    def testGetGridSize(self):
+        self.assertEqual(25, self.webApp.getGridSize())
+
+    def testGetWidth(self):
+        self.assertEqual(5,self.webApp.getWidth())
+
+    def testGetHeight(self):
+        self.assertEqual(5,self.webApp.getHeight())
+
+    def testGetElement(self):
+        elementID = 'signIn'
+        self.assertEqual(self.webApp.web['elements'][0], self.webApp.getElement(elementID))
+
+    def testGetSessionID(self):
+        self.assertEqual(0, self.webApp.getSessionID())
+
+    def testGetStartTime(self):
+        self.assertEqual(1607517809980, self.webApp.getStartTime())
+
+    def testGetEndTime(self):
+        self.assertEqual(1607517814664, self.webApp.getEndTime())
+
+    def testGetEventCount(self):
+        self.assertEqual(4, self.webApp.getElementCount())
+
+    def testGetEvents(self):
+        self.assertEqual(self.webApp.interactionData['events'], self.webApp.getEvents())
 
 if __name__ == '__main__':
     env = gym.make("Webapp-v0")
