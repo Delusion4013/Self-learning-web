@@ -6,7 +6,7 @@ import random
 import random as rand
 import gym
 import gym_envs
-
+from rl_model import Rlmodel
 class TestCustom_Env(unittest.TestCase):
 
     def testReset(self):
@@ -28,6 +28,41 @@ class TestCustom_Env(unittest.TestCase):
     def testRender(self):
         #test if render function return None, by the way, after finishing this test I know python test can print
         self.assertEqual(None,env.render())
+class TestRlModel(unittest.TestCase):
+    rlmodel = None
+    def setUp(self) -> None:
+        self.rlmodel = Rlmodel()
+
+        return super().setUp()
+    def testEpsilon(self):
+        rlmodel = Rlmodel()
+        initialEpsilon = rlmodel.getEpsilon()
+        rlmodel.train()
+        rlmodel.setWebRunning(False)
+        epsilon = rlmodel.getEpsilon()
+        self.assertLess(epsilon,initialEpsilon)
+
+    def testExploitExplore(self):
+        rlmodel = Rlmodel()
+        rlmodel.train()
+        rlmodel.setWebRunning(False)
+        if rlmodel.getExploreExpliotValue() == 1:
+            self.assertLess(rlmodel.getRandValue(),rlmodel.getEplsion())
+        elif rlmodel.getExploreExpliotValue() == 2:
+            self.assertGreater(rlmodel.getRandValue(),rlmodel.getEplsion()) 
+
+    def testQtable(self):
+        rlmodel = Rlmodel()
+        initalQtable = rlmodel.getQtable()
+        rlmodel.train()
+        qTable = rlmodel.getQtable()
+        notZero = False
+        for row in qTable:
+            for value in row:
+                if value != 0:
+                    notZero = True
+                    break
+        self.assertTrue(notZero)
 
 if __name__ == '__main__':
     env = gym.make("Webapp-v0")
