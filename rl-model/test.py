@@ -46,6 +46,7 @@ class TestRlModel(unittest.TestCase):
 
         return super().setUp()
     def testEpsilon(self):
+        #Test eplsion decreases during training
         rlmodel = Rlmodel()
         initialEpsilon = rlmodel.getEpsilon()
         rlmodel.train()
@@ -54,6 +55,7 @@ class TestRlModel(unittest.TestCase):
         self.assertLess(epsilon,initialEpsilon)
 
     def testExploitExplore(self):
+        #Tests if rlmodel correctly explore and exploits based on the random value
         rlmodel = Rlmodel()
         rlmodel.train()
         rlmodel.setWebRunning(False)
@@ -63,6 +65,7 @@ class TestRlModel(unittest.TestCase):
             self.assertGreater(rlmodel.getRandValue(),rlmodel.getEplsion()) 
 
     def testQtable(self):
+        #Tests if qtable is updated
         rlmodel = Rlmodel()
         initalQtable = rlmodel.getQtable()
         rlmodel.train()
@@ -75,6 +78,14 @@ class TestRlModel(unittest.TestCase):
                     break
         self.assertTrue(notZero)
 
+    def testQtableCreation(self):
+        #Tests if qtable is updated
+        rlmodel = Rlmodel()
+        initalQtable = rlmodel.getQtable()
+        notZero = True
+        for row in initalQtable:
+            for value in row:
+                self.assertEqual(value,0)
 class TestWebApp(unittest.TestCase):
     webApp = None
     def setUp(self) -> None:
