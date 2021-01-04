@@ -74,7 +74,7 @@ class WebApp:
     #Returns as numbers in a 2d array 
     def observer(self):
         width , height =(self.getWidth(),self.getHeight())
-        elements=[[0]*width]*height
+        elements=numpy.zeros((width,height), dtype=int).astype(str)
         id = 0
         for i in self.web['elements']:
             id = id +1
