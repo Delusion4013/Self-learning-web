@@ -10,9 +10,10 @@ function TaskButton(props) {
 	let x2 = x1 + props.rect.w;	
 	let y2 = y1 + props.rect.h;	
 	return (
-		<button onClick={props.onClick} className="styled-box task-button" style={{gridColumnStart: x1, gridRowStart: y1, gridColumnEnd: x2, gridRowEnd: y2 }}>
+		<button buttonid={props.id} data-testid="taskButton" onClick={props.onClick} className="styled-box task-button" style={{gridColumnStart: x1, gridRowStart: y1, gridColumnEnd: x2, gridRowEnd: y2 }}>
 			{props.children}
-		</button>
+		</button >
+		
 	)
 }
 

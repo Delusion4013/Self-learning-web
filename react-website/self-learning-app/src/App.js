@@ -10,7 +10,7 @@ function App() {
 			🏹 Quiver Bank
 			</h1>
 		</header>
-		{
+		  {
 			console.log(currentLayout) //NB: Useful for debugging, you can pretty much just output anything to console and it'll either format it or just convert it to a string
 		}
 		<LayoutGrid layout={currentLayout}>
