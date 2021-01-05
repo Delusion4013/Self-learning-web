@@ -7,6 +7,8 @@ import random as rand
 import gym
 import gym_envs
 import json
+import io
+import sys
 from rl_model import Rlmodel
 from gym_envs.envs.webApp import WebApp
 class TestCustom_Env(unittest.TestCase):
@@ -38,7 +40,11 @@ class TestCustom_Env(unittest.TestCase):
 
     def testRender(self):
         #test if render function return None, by the way, after finishing this test I know python test can print
-        self.assertEqual(None,env.render())
+        captureOutput=io.StringIO()
+        sys.stdout=captureOutput
+        env.render()
+        sys.stdout=sys.__stdout__
+        self.assertEqual(env.getWebApp().observer()[0][0],captureOutput.getvalue()[0][0])
 
 class TestRlModel(unittest.TestCase):
     rlmodel = None
