@@ -12,7 +12,7 @@ let container = null;
  * @param {*} element 
  * @param {*} handleButton 
  */
-function renderTaskButton(element, handleButton) {
+function renderTestTaskButton(element, handleButton) {
    return (
       <TaskButton
          key={element.id}
@@ -44,13 +44,13 @@ afterEach(() => {
  * The onclick function for taskbutton usually calls handleClick and passes the id to there
  * So instead we replace that with a jest dummy function to check it correctly gets the id
  */
-it("passes the button id correctly", () => {
+test("passes the button id correctly to the button handler", () => {
    const onClick = jest.fn();
    let testElement = {
       id: "test",
       rect: { x: 1, y: 1, w: 1, h: 1 },
    }
-   let button = renderTaskButton(testElement, onClick);
+   let button = renderTestTaskButton(testElement, onClick);
    act(() => {
       render(button, container);
    });
@@ -62,7 +62,5 @@ it("passes the button id correctly", () => {
    });
    expect(onClick).lastCalledWith(testElement.id);
    expect(onClick).toHaveBeenCalledTimes(1);
-
-   
 
 });

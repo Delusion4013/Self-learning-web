@@ -29,7 +29,8 @@ class LayoutGrid extends Component {
 
 	render() {
 		return (
-			<div className="layout-grid" style={{gridTemplateColumns: this.state.repeatColumns, gridTemplateRows: this.state.repeatRows}}>
+			<div className="layout-grid" style={{ gridTemplateColumns: this.state.repeatColumns, gridTemplateRows: this.state.repeatRows }}
+				data-testid="layoutGrid">
 				{this.state.elements.map(e => this.renderTaskButton(e))}
 			</div>
 		);
@@ -52,18 +53,22 @@ class LayoutGrid extends Component {
 						handleButton(e, this.state.session, element.id);
 						//if (element.endGoal) this.downloadUserSession(this.state.session);
 					if (element.endGoal) {
-						const requestOptions = {
-							method: 'POST',
-							headers: { 'Content-Type': 'application/json' },
-							body: JSON.stringify(this.state.session)
-						};
-						fetch("http://localhost:3005/send", requestOptions)
-							.then(res => console.log(res));
+						this.endSession()
 					}
 					}}> 
 				{element.content}
 			</TaskButton>
 		)
+	}
+
+	endSession = () => {
+		const requestOptions = {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(this.state.session)
+		};
+		fetch("http://localhost:3005/send", requestOptions)
+			.then(res => console.log(res));
 	}
 
 	/**
