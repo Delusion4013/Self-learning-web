@@ -7,6 +7,11 @@ import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
 let container = null;
 
+/**
+ * This function is used to generate the test task button.
+ * @param {*} element 
+ * @param {*} handleButton 
+ */
 function renderTaskButton(element, handleButton) {
    return (
       <TaskButton
@@ -16,7 +21,6 @@ function renderTaskButton(element, handleButton) {
          onClick={(e) => {
             handleButton(element.id);
          }}>
-         {element.content}
       </TaskButton>
    )
 }
@@ -35,12 +39,16 @@ afterEach(() => {
 });
 
 
-
+/**
+ * The aim of this test is to check that the taskbutton correctly passes the id when its clicked
+ * The onclick function for taskbutton usually calls handleClick and passes the id to there
+ * So instead we replace that with a jest dummy function to check it correctly gets the id
+ */
 it("passes the button id correctly", () => {
    const onClick = jest.fn();
    let testElement = {
       id: "test",
-      rect: { x: 1, y: 1, w: 1, h: 2 },
+      rect: { x: 1, y: 1, w: 1, h: 1 },
    }
    let button = renderTaskButton(testElement, onClick);
    act(() => {
