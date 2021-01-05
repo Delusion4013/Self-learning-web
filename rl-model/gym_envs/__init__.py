@@ -1,7 +1,7 @@
-from gym.envs.register import register
+from gym.envs.registration import register
 register(
-    id='Webapp',
+    id='Webapp-v0',
     entry_point='gym_envs.envs:CustomEnv',
     #Made max episode one as the rl model will not be make multiple actions
-    max_episodes_steps=1,
+    max_episode_steps=1,
 )
