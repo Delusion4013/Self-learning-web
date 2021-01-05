@@ -2,6 +2,17 @@
 import './App.css';
 import LayoutGrid from './components/LayoutGrid'; 
 import currentLayout from './grid-layouts/test.json'; //Can just omit the file type
+
+let exportSession = (session) => {
+	const requestOptions = {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify(session)
+	};
+	fetch("http://localhost:3005/send", requestOptions)
+		.then(res => console.log(res));
+}
+
 function App() {
   return (
     <div id="container">
@@ -13,10 +24,11 @@ function App() {
 		  {
 			console.log(currentLayout) //NB: Useful for debugging, you can pretty much just output anything to console and it'll either format it or just convert it to a string
 		}
-		<LayoutGrid layout={currentLayout}>
+		<LayoutGrid layout={currentLayout} onGoal={exportSession}>
 		</LayoutGrid>
     </div>
   );
+  
 }
 
 export default App;

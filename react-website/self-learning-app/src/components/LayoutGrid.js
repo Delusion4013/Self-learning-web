@@ -49,11 +49,12 @@ class LayoutGrid extends Component {
 				key={element.id} 
 				id={element.id} 
 				rect={element.rect}
+				isGoal={element.endGoal}
 				onClick={(e) => {
 						handleButton(e, this.state.session, element.id);
 						//if (element.endGoal) this.downloadUserSession(this.state.session);
 					if (element.endGoal) {
-						this.endSession()
+						this.props.onGoal(this.state.session);
 					}
 					}}> 
 				{element.content}
@@ -61,15 +62,7 @@ class LayoutGrid extends Component {
 		)
 	}
 
-	endSession = () => {
-		const requestOptions = {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(this.state.session)
-		};
-		fetch("http://localhost:3005/send", requestOptions)
-			.then(res => console.log(res));
-	}
+
 
 	/**
 	 * Adds an end time to the user session and then downloads it to a .json file.

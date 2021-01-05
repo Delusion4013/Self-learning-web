@@ -28,7 +28,7 @@ afterEach(() => {
  */
 test("correctly loads the layout from a .json file", () => {
     let gridElement =
-        <LayoutGrid layout={currentLayout}></LayoutGrid>
+        <LayoutGrid layout={currentLayout}> </LayoutGrid>
     act(() => {
         render(
             gridElement,
@@ -44,17 +44,17 @@ test("correctly loads the layout from a .json file", () => {
 });
 
 test("Session ends on final button", () => { 
+    const onGoal = jest.fn();
     let gridElement =
-        <LayoutGrid layout={currentLayout}></LayoutGrid>
+        <LayoutGrid layout={currentLayout} onGoal={onGoal} ></LayoutGrid>
     act(() => {
         render(
             gridElement,
             container
         )
     })
-    const grid = document.querySelector("[data-testid=layoutGrid]");
-    expect(gridElement.props.layout).toHaveProperty('elements');
-    const elements = gridElement.props.layout.elements;
-    currentLayout.elements.forEach(e => expect(elements).toContain(e));
+    const goalButton = document.querySelector("[data-testid=taskButton-goal]");
+    goalButton.dispatchEvent(new MouseEvent("click", { bubbles: true }))
+    expect(onGoal).toHaveBeenCalledTimes(1);
 
 });
