@@ -7,7 +7,7 @@ let exportSession = (session) => {
 	const requestOptions = {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify(session)
+		body: JSON.stringify({ filename: "dataOut", session })
 	};
 	fetch("http://localhost:3005/send", requestOptions)
 		.then(res => console.log(res));
