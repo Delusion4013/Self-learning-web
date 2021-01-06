@@ -8,7 +8,7 @@
             "id":"signIn",
             "content":"Sign in",
             "rect":{
-                "x":1,
+                "x":4,
                 "y":2,
                 "w":1,
                 "h":1
@@ -19,8 +19,8 @@
             "content":"Sign Out",
             "endGoal":true,
             "rect":{
-                "x":2,
-                "y":1,
+                "x":1,
+                "y":2,
                 "w":1,
                 "h":1
             }
@@ -39,8 +39,8 @@
             "id":"Test",
             "content":"Test",
             "rect":{
-                "x":4,
-                "y":2,
+                "x":2,
+                "y":1,
                 "w":2,
                 "h":1
             }

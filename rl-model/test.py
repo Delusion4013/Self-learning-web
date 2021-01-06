@@ -40,11 +40,14 @@ class TestCustom_Env(unittest.TestCase):
 
     def testRender(self):
         #test if render function return None, by the way, after finishing this test I know python test can print
-        captureOutput=io.StringIO()
-        sys.stdout=captureOutput
+        renderOutput=io.StringIO()
+        sys.stdout=renderOutput
         env.render()
         sys.stdout=sys.__stdout__
-        self.assertEqual(env.getWebApp().observer()[0][0],captureOutput.getvalue()[0][0])
+        render=str(renderOutput.getvalue()).split("\n")
+        for i in [0,env.getWebApp().getWidth()-1]:
+            for m in [0,env.getWebApp().getHeight()-1]:
+                self.assertEqual(env.getWebApp().observer()[i][m],render[i][2*m])
 
 class TestRlModel(unittest.TestCase):
     rlmodel = None
