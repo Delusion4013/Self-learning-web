@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from "react-dom";
-import TaskButton from './../TaskButton';
-import handleButton from "./../handleEvents";
-import App from "./../../App"
+import TaskButton from '../TaskButton';
+import handleButton from "../handleEvents";
+import App from "../../App"
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
 let container = null;

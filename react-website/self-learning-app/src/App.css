@@ -48,7 +48,6 @@ html, body {
 	border-radius: 1px;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	color: white;
-	background-color: var(--main-color);
 	/* parameters from https://getcssscan.com/css-box-shadow-examples */
 }
 
