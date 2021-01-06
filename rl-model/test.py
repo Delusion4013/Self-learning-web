@@ -39,7 +39,7 @@ class TestCustom_Env(unittest.TestCase):
         self.assertEqual({'TimeLimit.truncated': True},empty)
 
     def testRender(self):
-        #test if render function return None, by the way, after finishing this test I know python test can print
+        #test if render function print out put is right
         renderOutput=io.StringIO()
         sys.stdout=renderOutput
         env.render()

@@ -20,7 +20,7 @@
             "endGoal":true,
             "rect":{
                 "x":1,
-                "y":2,
+                "y":1,
                 "w":1,
                 "h":1
             }
@@ -29,7 +29,7 @@
             "id":"account",
             "content":"Account",
             "rect":{
-                "x":1,
+                "x":2,
                 "y":1,
                 "w":1,
                 "h":1
@@ -39,8 +39,8 @@
             "id":"Test",
             "content":"Test",
             "rect":{
-                "x":2,
-                "y":1,
+                "x":1,
+                "y":2,
                 "w":2,
                 "h":1
             }
