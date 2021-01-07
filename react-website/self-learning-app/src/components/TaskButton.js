@@ -3,6 +3,7 @@ const convert = require('color-convert');
 
 function getRandomColour(id) {
 	let val = (id.split("").map(char => char.charCodeAt(0)).reduce((acc, curr) => acc * curr) % 255);
+	
 	let baseColour = convert.hex.hsv('d73a49');
 	baseColour[0] += val;
 	baseColour[0] %= 255;
