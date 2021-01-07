@@ -7,6 +7,8 @@ import random as rand
 import gym
 import gym_envs
 import json
+import io
+import sys
 from rl_model import Rlmodel
 from gym_envs.envs.webApp import WebApp
 class TestCustom_Env(unittest.TestCase):
@@ -37,8 +39,15 @@ class TestCustom_Env(unittest.TestCase):
         self.assertEqual({'TimeLimit.truncated': True},empty)
 
     def testRender(self):
-        #test if render function return None, by the way, after finishing this test I know python test can print
-        self.assertEqual(None,env.render())
+        #test if render function print out put is right
+        renderOutput=io.StringIO()
+        sys.stdout=renderOutput
+        env.render()
+        sys.stdout=sys.__stdout__
+        render=str(renderOutput.getvalue()).split("\n")
+        for i in [0,env.getWebApp().getWidth()-1]:
+            for m in [0,env.getWebApp().getHeight()-1]:
+                self.assertEqual(env.getWebApp().observer()[i][m],render[i][2*m])
 
 class TestRlModel(unittest.TestCase):
     rlmodel = None
@@ -90,21 +99,24 @@ class TestRlModel(unittest.TestCase):
                 
 class TestWebApp(unittest.TestCase):
     webApp = None
+    testWeb = None
+    testInteraction = None
+
     def setUp(self) -> None:
         self.webApp = WebApp()
+        with self.webApp.gridPath.open() as layout_file:
+            self.testWeb = json.load(layout_file)
+        with self.webApp.activityPath.open() as interaction_file:
+            self.testInteraction = json.load(interaction_file)
         return super().setUp()
     
     def testInitWeb(self):
-        with self.webApp.gridPath.open() as layout_file:
-            testWeb = json.load(layout_file)
         self.webApp.initWeb()
-        self.assertEquals(testWeb, self.webApp.web)
+        self.assertEqual(self.testWeb, self.webApp.web)
 
-    def testInitWeb(self):
-        with self.webApp.activityPath.open() as interaction_file:
-            testInteraction = json.load(interaction_file)
+    def testInitInteraction(self):
         self.webApp.initInteraction()
-        self.assertEqual(testInteraction, self.webApp.interactionData)
+        self.assertEqual(self.testInteraction, self.webApp.interactionData)
 
     def testSwapElement(self):
         temp1 = self.webApp.web['elements'][0]['rect']['y']   
@@ -114,36 +126,36 @@ class TestWebApp(unittest.TestCase):
         self.assertEqual(temp1,self.webApp.web['elements'][1]['rect']['y'])
 
     def testGetElementCount(self):
-        self.assertEqual(4,self.webApp.getElementCount())
+        self.assertEqual(len(self.testWeb['elements']),self.webApp.getElementCount())
 
     def testGetElementID(self):
         intID = 2
         self.assertEqual(self.webApp.web['elements'][intID-1]['id'], self.webApp.getElementID(intID))
 
     def testGetGridSize(self):
-        self.assertEqual(25, self.webApp.getGridSize())
+        self.assertEqual(self.testWeb['gridParams']['w']*self.testWeb['gridParams']['h'], self.webApp.getGridSize())
 
     def testGetWidth(self):
-        self.assertEqual(5,self.webApp.getWidth())
+        self.assertEqual(self.testWeb['gridParams']['w'],self.webApp.getWidth())
 
     def testGetHeight(self):
-        self.assertEqual(5,self.webApp.getHeight())
+        self.assertEqual(self.testWeb['gridParams']['h'],self.webApp.getHeight())
 
     def testGetElement(self):
         elementID = 'signIn'
         self.assertEqual(self.webApp.web['elements'][0], self.webApp.getElement(elementID))
 
     def testGetSessionID(self):
-        self.assertEqual(0, self.webApp.getSessionID())
+        self.assertEqual(self.testInteraction['sessionId'], self.webApp.getSessionID())
 
     def testGetStartTime(self):
-        self.assertEqual(1607517809980, self.webApp.getStartTime())
+        self.assertEqual(self.testInteraction['startTime'], self.webApp.getStartTime())
 
     def testGetEndTime(self):
-        self.assertEqual(1607517814664, self.webApp.getEndTime())
+        self.assertEqual(self.testInteraction['endTime'], self.webApp.getEndTime())
 
     def testGetEventCount(self):
-        self.assertEqual(4, self.webApp.getElementCount())
+        self.assertEqual(len(self.testInteraction['events']), self.webApp.getEventsCount())
 
     def testGetEvents(self):
         self.assertEqual(self.webApp.interactionData['events'], self.webApp.getEvents())

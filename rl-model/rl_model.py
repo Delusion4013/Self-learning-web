@@ -124,6 +124,7 @@ if __name__ == "__main__":
     rlModel.setEpsilonDecay(0.7)
     rlModel.setLearningRate(0.2)
     rlModel.setGamma(0.7)
+    rlModel.setRender(True)
     rlModel.train()
 
     #rlmodel.setWebRunning(False)
