@@ -6,7 +6,7 @@
     "elements":[
         {
             "id":"signIn",
-            "content":"Sign in",
+            "content":"Log in",
             "rect":{
                 "x":4,
                 "y":2,
