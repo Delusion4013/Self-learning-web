@@ -1,0 +1,25 @@
+
+type Layout @model {
+	id: ID!
+	gridParams: GridParams
+	elements: [Element]
+}
+
+type GridParams {
+	w: Int!
+	h: Int!
+}
+
+type Element {
+	id: ID!
+	content: String 
+	rect: Rect!
+
+}
+
+type Rect {
+	x: Int!
+	y: Int! 
+	w: Int! 
+	h: Int!
+}

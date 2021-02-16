@@ -1,0 +1,23 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-selflearningapp-dev-223240-authRole",
+            "UnauthRoleArn": "arn:aws:iam::933114840359:role/amplify-selflearningapp-dev-223240-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::933114840359:role/amplify-selflearningapp-dev-223240-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "amplify-selflearningapp-dev-223240-deployment",
+            "UnauthRoleName": "amplify-selflearningapp-dev-223240-unauthRole",
+            "StackName": "amplify-selflearningapp-dev-223240",
+            "StackId": "arn:aws:cloudformation:eu-west-1:933114840359:stack/amplify-selflearningapp-dev-223240/387fae80-6d82-11eb-b84d-0aca402fe1f3",
+            "AmplifyAppId": "do47kanmf5eqe"
+        },
+        "categories": {
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "do47kanmf5eqe",
+                    "type": "manual"
+                }
+            }
+        }
+    }
+}
