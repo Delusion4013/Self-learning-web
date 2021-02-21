@@ -3,6 +3,14 @@ import './App.css';
 import LayoutGrid from './components/LayoutGrid';
 import currentLayout from './grid-layouts/test.json'; //Can just omit the file type
 
+import Amplify, { API } from 'aws-amplify';
+import awsconfig from './aws-exports';
+
+Amplify.configure(awsconfig);
+
+const apiName = 'MyApiName';
+
+
 let exportSession = (session) => {
 	const requestOptions = {
 		method: 'POST',

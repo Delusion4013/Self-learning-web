@@ -1,0 +1,5 @@
+{
+    "tableName": "layouts",
+    "partitionKeyName": "id",
+    "partitionKeyType": "S"
+}
