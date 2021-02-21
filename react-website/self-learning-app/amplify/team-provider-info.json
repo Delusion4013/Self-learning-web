@@ -21,11 +21,11 @@
       "function": {
         "helloworld": {
           "deploymentBucketName": "amplify-selflearningapp-dev-223240-deployment",
-          "s3Key": "amplify-builds/helloworld-4e396a355a74322b3476-build.zip"
+          "s3Key": "amplify-builds/helloworld-544878304b6b36724255-build.zip"
         },
         "layouts": {
           "deploymentBucketName": "amplify-selflearningapp-dev-223240-deployment",
-          "s3Key": "amplify-builds/layouts-3849303835744863685a-build.zip"
+          "s3Key": "amplify-builds/layouts-684f4248576277366356-build.zip"
         }
       }
     }

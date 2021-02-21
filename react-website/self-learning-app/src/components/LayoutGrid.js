@@ -1,7 +1,8 @@
 
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import TaskButton from './TaskButton';
 import handleButton from "./handleEvents";
+
 // creates layout grid preset from test.json, gets start time
 //time stamp, creates events stack
 
@@ -9,32 +10,35 @@ import handleButton from "./handleEvents";
  * A component that stores a grid of buttons and records click events on those buttons as a session.
  * When an element marked as the end goal is clicked, it downloads the current session in JSON format.
  */
-class LayoutGrid extends Component {
-	constructor(props) {
-		super(props); //We're using inheritance here, super() applies the original constructor for the Component class
-		let gridParams = props.layout.gridParams;
-		this.state = {
-			elements: props.layout.elements,
-			repeatColumns: `repeat(${gridParams.w}, 1fr)`,
-			repeatRows: `repeat(${gridParams.h}, 1fr)`,
-			session: {
-				sessionId : 0,
-				startTime: Date.now(),
-				endTime: 0,
-				events: []
-			}
-		};
+function LayoutGrid(props) {
 
+	console.log("Loading grid:" + JSON.stringify(props.layout));
+	const [session, setSession] = useState({
+		sessionId: 0,
+		startTime: Date.now(),
+		endTime: 0,
+		events: []
+	});
+	if (Object.keys(props.layout).length === 0) {
+		return (<div></div>);
 	}
 
-	render() {
-		return (
-			<div className="layout-grid" style={{ gridTemplateColumns: this.state.repeatColumns, gridTemplateRows: this.state.repeatRows }}
-				data-testid="layoutGrid">
-				{this.state.elements.map(e => this.renderTaskButton(e))}
-			</div>
-		);
-	}
+	const gridParams = props.layout.gridParams;
+	const elements = props.layout.elements;
+	const repeatColumns = `repeat(${gridParams.w}, 1fr)`;
+	const repeatRows = `repeat(${gridParams.h}, 1fr)`;
+
+
+
+	return (
+		<div className="layout-grid" style={{ gridTemplateColumns: repeatColumns, gridTemplateRows: repeatRows }}
+			data-testid="layoutGrid">
+			{elements.map(e => renderTaskButton(e))}
+		</div>
+	)
+
+
+
 
 	/**
 	 * Renders the TaskButton on the grid. Also handles the logic for downloading the session when a goal button is clicked.
@@ -43,20 +47,20 @@ class LayoutGrid extends Component {
 	 * @param {Object} element.rect - Stores the elements width, height, x and y as multiples of the cell size.
 	 * @param {String} element.content - Whatever text to display for the element
 	 */
-	renderTaskButton(element) {
+	function renderTaskButton(element) {
 		return (
-			<TaskButton 
-				key={element.id} 
-				id={element.id} 
+			<TaskButton
+				key={element.id}
+				id={element.id}
 				rect={element.rect}
 				isGoal={element.endGoal}
 				onClick={(e) => {
-						handleButton(e, this.state.session, element.id);
-						//if (element.endGoal) this.downloadUserSession(this.state.session);
+					handleButton(e, this.state.session, element.id);
+					//if (element.endGoal) this.downloadUserSession(this.state.session);
 					if (element.endGoal) {
 						this.props.onGoal(this.state.session);
 					}
-					}}> 
+				}}>
 				{element.content}
 			</TaskButton>
 		)
@@ -64,25 +68,8 @@ class LayoutGrid extends Component {
 
 
 
-	/**
-	 * Adds an end time to the user session and then downloads it to a .json file.
-	 * @param {Object} session - The current recording of user events.
-	 * @param {Date} session.endTime - The time the user clicked on the goal element.
-	 */
-	downloadUserSession(session) {
-		session.endTime = Date.now(); // gets endtime time stamp
-		console.log(session);
-		//writes session to file in format of dataOut.json file
-		const element = document.createElement("a");
-		const file = new Blob([JSON.stringify(session)], {type: 'text/plain'});
-		element.href = URL.createObjectURL(file);
-		element.download = "dataOut.json";
-		document.body.appendChild(element); // Required for this to work in FireFox
-		element.click();
-	}
-		//Function returns a <div> element
-		//Inside the div element, some javascript containing the button array
-		//React takes the array and uses that to create the actual html button elements
+
+
 }
 
 export default LayoutGrid;

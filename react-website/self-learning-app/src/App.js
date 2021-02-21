@@ -1,14 +1,13 @@
 
 import './App.css';
 import LayoutGrid from './components/LayoutGrid';
-import currentLayout from './grid-layouts/test.json'; //Can just omit the file type
-
+import React, { useState, useEffect } from 'react';
 import Amplify, { API } from 'aws-amplify';
 import awsconfig from './aws-exports';
 
 Amplify.configure(awsconfig);
 
-const apiName = 'MyApiName';
+const apiName = 'api';
 
 
 let exportSession = (session) => {
@@ -21,7 +20,29 @@ let exportSession = (session) => {
 		.then(res => console.log(res));
 }
 
+
+
 function App() {
+
+	const [layout, setLayout] = useState({});
+
+	useEffect(() => {
+		// Update the document title using the browser API
+			fetchLayouts();
+	}, []);
+
+	async function fetchLayouts() {
+		console.log("Getting layouts");
+		const response = await API.get(apiName, '/layouts', {});
+		let defaultLayout = JSON.parse(response.body.layouts)[0];
+		console.log("Layout recevied: " + JSON.stringify(defaultLayout));
+		setLayout(defaultLayout);
+
+	}
+
+
+
+
 	return (
 		<div id="container">
 			<header className="title styled-box">
@@ -29,10 +50,8 @@ function App() {
 					🏹 Quiver Bank
 			</h1>
 			</header>
-			{
-				console.log(currentLayout) //NB: Useful for debugging, you can pretty much just output anything to console and it'll either format it or just convert it to a string
-			}
-			<LayoutGrid layout={currentLayout} onGoal={exportSession}>
+			
+			<LayoutGrid layout={layout} onGoal={exportSession}>
 			</LayoutGrid>
 		</div>
 	);
