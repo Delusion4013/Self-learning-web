@@ -29,5 +29,40 @@
         }
       }
     }
+  },
+  "feattest": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-selflearningapp-feattest-104821-authRole",
+      "UnauthRoleArn": "arn:aws:iam::933114840359:role/amplify-selflearningapp-feattest-104821-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::933114840359:role/amplify-selflearningapp-feattest-104821-authRole",
+      "Region": "eu-west-1",
+      "DeploymentBucketName": "amplify-selflearningapp-feattest-104821-deployment",
+      "UnauthRoleName": "amplify-selflearningapp-feattest-104821-unauthRole",
+      "StackName": "amplify-selflearningapp-feattest-104821",
+      "StackId": "arn:aws:cloudformation:eu-west-1:933114840359:stack/amplify-selflearningapp-feattest-104821/51faf480-7432-11eb-a2e7-0a1f0e28cad1",
+      "AmplifyAppId": "do47kanmf5eqe"
+    },
+    "categories": {
+      "function": {
+        "layouts": {
+          "deploymentBucketName": "amplify-selflearningapp-feattest-104821-deployment",
+          "s3Key": "amplify-builds/layouts-684f4248576277366356-build.zip"
+        },
+        "helloworld": {
+          "deploymentBucketName": "amplify-selflearningapp-feattest-104821-deployment",
+          "s3Key": "amplify-builds/helloworld-544878304b6b36724255-build.zip"
+        },
+        "testfunction": {
+          "deploymentBucketName": "amplify-selflearningapp-feattest-104821-deployment",
+          "s3Key": "amplify-builds/testfunction-4e457743716262726a43-build.zip"
+        }
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "do47kanmf5eqe",
+          "type": "manual"
+        }
+      }
+    }
   }
 }
