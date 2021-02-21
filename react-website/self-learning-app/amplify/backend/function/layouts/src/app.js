@@ -60,11 +60,12 @@ app.get("/layouts", function (request, response) {
  */
 app.post("/layouts", function (request, response) {
 	const timestamp = new Date().toISOString();
+	let id = request.body.id ? request.body.id : uuidv4();
 	let params = {
 		TableName: tableName,
 		Item: {
 			...request.body.layout,
-			id: "test", //obviously this isn't unique, uuid is one option for generating unique ids, but depends if we want to have our own id format
+			id,
 			createdAt: timestamp,
 		}
 	}
