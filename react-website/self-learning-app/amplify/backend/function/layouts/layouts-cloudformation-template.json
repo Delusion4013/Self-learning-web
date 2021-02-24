@@ -16,13 +16,13 @@
     "s3Key": {
       "Type": "String"
     },
-    "storagelayoutsName": {
+    "storagelayoutsDDBName": {
       "Type": "String",
-      "Default": "storagelayoutsName"
+      "Default": "storagelayoutsDDBName"
     },
-    "storagelayoutsArn": {
+    "storagelayoutsDDBArn": {
       "Type": "String",
-      "Default": "storagelayoutsArn"
+      "Default": "storagelayoutsDDBArn"
     }
   },
   "Conditions": {
@@ -97,12 +97,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "selflearningappLambdaRole51d13667",
+            "selflearningappLambdaRole27348352",
             {
               "Fn::Join": [
                 "",
                 [
-                  "selflearningappLambdaRole51d13667",
+                  "selflearningappLambdaRole27348352",
                   "-",
                   {
                     "Ref": "env"
@@ -182,14 +182,14 @@
               ],
               "Resource": [
                 {
-                  "Ref": "storagelayoutsArn"
+                  "Ref": "storagelayoutsDDBArn"
                 },
                 {
                   "Fn::Join": [
                     "/",
                     [
                       {
-                        "Ref": "storagelayoutsArn"
+                        "Ref": "storagelayoutsDDBArn"
                       },
                       "index/*"
                     ]

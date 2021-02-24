@@ -60,12 +60,12 @@ app.get("/layouts", function (request, response) {
  */
 app.post("/layouts", function (request, response) {
 	const timestamp = new Date().toISOString();
-	let id = request.body.id ? request.body.id : uuidv4();
+	let layoutId = request.body.id ? request.body.id : uuidv4();
 	let params = {
 		TableName: tableName,
 		Item: {
 			...request.body.layout,
-			id,
+			layoutId,
 			createdAt: timestamp,
 		}
 	}
