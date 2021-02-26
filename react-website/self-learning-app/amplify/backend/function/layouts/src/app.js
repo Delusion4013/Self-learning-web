@@ -27,16 +27,18 @@ app.use(function (request, response, next) {
 */
 
 /**
- * Retrieves the 10 latest layouts from the DynamoDB and returns them
+ * Retrieves the {count} latest layouts from the DynamoDB and returns them
+ * Unless no value is provided, in which case returns the latest 1
  */
 app.get("/layouts", function (request, response) {
+	const limit = request.limit ? request.limit : 1
 	let params = {
 		TableName: tableName,
-		limit: 10
+		limit: limit
 	}
 	/*
 		So the steps here are:
-		 - Try to scan the table (retrieve all the entries in it)
+		 - Try to scan the table (retrieve all the entries in it up to limit)
 		 - If there's an error with this, return the error
 		 - Otherwise return an array of the layouts found
 

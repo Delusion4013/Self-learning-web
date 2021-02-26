@@ -25,7 +25,7 @@
         },
         "layouts": {
           "deploymentBucketName": "amplify-selflearningapp-dev-223240-deployment",
-          "s3Key": "amplify-builds/layouts-5a444951505347373372-build.zip"
+          "s3Key": "amplify-builds/layouts-546670565073524f6b53-build.zip"
         },
         "testfunction": {
           "deploymentBucketName": "amplify-selflearningapp-dev-223240-deployment",
