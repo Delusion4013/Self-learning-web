@@ -12,6 +12,13 @@
             "Type": "String"
         },
         
+        "sortKeyName": {
+            "Type": "String"
+        },
+        "sortKeyType": {
+            "Type": "String"
+        },
+        
         "tableName": {
             "Type": "String"
         }
@@ -33,7 +40,12 @@
                 "AttributeDefinitions": [
                   
                   {
-                      "AttributeName": "id",
+                      "AttributeName": "sessionId",
+                      "AttributeType": "S"
+                  }  , 
+                  
+                  {
+                      "AttributeName": "createdAt",
                       "AttributeType": "S"
                   } 
                   
@@ -41,8 +53,13 @@
                 "KeySchema": [
                   
                   {
-                    "AttributeName": "id",
+                    "AttributeName": "sessionId",
                     "KeyType": "HASH"
+                  }  , 
+                  
+                  {
+                    "AttributeName": "createdAt",
+                    "KeyType": "RANGE"
                   } 
                   
                 ],
@@ -110,6 +127,17 @@
         "PartitionKeyType": {
             "Value": {
                 "Ref": "partitionKeyType"
+            }
+        },
+        
+        "SortKeyName": {
+            "Value": {
+                "Ref": "sortKeyName"
+            }
+        },
+        "SortKeyType": {
+            "Value": {
+                "Ref": "sortKeyType"
             }
         },
         

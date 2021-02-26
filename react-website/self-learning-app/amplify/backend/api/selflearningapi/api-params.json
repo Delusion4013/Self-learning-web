@@ -7,24 +7,13 @@
                 "open": true
             },
             "policyResourceName": "/layouts"
-        },
-        {
-            "name": "/helloworld",
-            "lambdaFunction": "helloworld",
-            "privacy": {
-                "open": true
-            },
-            "policyResourceName": "/helloworld"
         }
     ],
-    "resourceName": "api",
-    "apiName": "api",
+    "resourceName": "selflearningapi",
+    "apiName": "selflearningapi",
     "functionArns": [
         {
             "lambdaFunction": "layouts"
-        },
-        {
-            "lambdaFunction": "helloworld"
         }
     ],
     "privacy": {
@@ -37,14 +26,6 @@
         {
             "category": "function",
             "resourceName": "layouts",
-            "attributes": [
-                "Name",
-                "Arn"
-            ]
-        },
-        {
-            "category": "function",
-            "resourceName": "helloworld",
             "attributes": [
                 "Name",
                 "Arn"

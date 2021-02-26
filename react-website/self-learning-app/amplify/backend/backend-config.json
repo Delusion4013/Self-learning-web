@@ -7,7 +7,7 @@
     }
   },
   "api": {
-    "api": {
+    "selflearningapi": {
       "service": "API Gateway",
       "providerPlugin": "awscloudformation",
       "dependsOn": [
@@ -18,20 +18,16 @@
             "Name",
             "Arn"
           ]
-        },
-        {
-          "category": "function",
-          "resourceName": "helloworld",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
         }
       ]
     }
   },
   "storage": {
-    "layouts": {
+    "layoutsDDB": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
+    },
+    "sessionsDDB": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
     }
@@ -44,7 +40,7 @@
       "dependsOn": [
         {
           "category": "storage",
-          "resourceName": "layouts",
+          "resourceName": "layoutsDDB",
           "attributes": [
             "Name",
             "Arn"
@@ -56,16 +52,24 @@
         }
       ]
     },
-    "helloworld": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
-    "testfunction": {
+    "sessions": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
-      "dependsOn": []
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "sessionsDDB",
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "attributeEnvMap": {
+            "Name": "TABLE_NAME",
+            "Arn": "TABLE_ARN"
+          }
+        }
+      ]
     }
   }
 }
