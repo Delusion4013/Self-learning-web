@@ -30,6 +30,10 @@
         "testfunction": {
           "deploymentBucketName": "amplify-selflearningapp-dev-223240-deployment",
           "s3Key": "amplify-builds/testfunction-4e457743716262726a43-build.zip"
+        },
+        "sessions": {
+          "deploymentBucketName": "amplify-selflearningapp-dev-223240-deployment",
+          "s3Key": "amplify-builds/sessions-794a72474a7944645930-build.zip"
         }
       }
     }

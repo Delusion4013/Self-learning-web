@@ -1,0 +1,35 @@
+{
+    "paths": [
+        {
+            "name": "/layouts",
+            "lambdaFunction": "layouts",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/layouts"
+        }
+    ],
+    "resourceName": "selflearningapi",
+    "apiName": "selflearningapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "layouts"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-selflearningapp-dev-223240-authRole",
+        "unAuthRoleName": "amplify-selflearningapp-dev-223240-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "layouts",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
