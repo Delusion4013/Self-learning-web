@@ -33,7 +33,7 @@
         },
         "sessions": {
           "deploymentBucketName": "amplify-selflearningapp-dev-223240-deployment",
-          "s3Key": "amplify-builds/sessions-794a72474a7944645930-build.zip"
+          "s3Key": "amplify-builds/sessions-5131676e596755774c30-build.zip"
         }
       }
     }
