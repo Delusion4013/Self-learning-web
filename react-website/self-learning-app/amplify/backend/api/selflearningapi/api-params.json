@@ -7,6 +7,22 @@
                 "open": true
             },
             "policyResourceName": "/layouts"
+        },
+        {
+            "name": "/helloworld",
+            "lambdaFunction": "helloworld",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/helloworld"
+        },
+        {
+            "name": "/sessions",
+            "lambdaFunction": "sessions",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/sessions"
         }
     ],
     "resourceName": "selflearningapi",
@@ -14,6 +30,12 @@
     "functionArns": [
         {
             "lambdaFunction": "layouts"
+        },
+        {
+            "lambdaFunction": "helloworld"
+        },
+        {
+            "lambdaFunction": "sessions"
         }
     ],
     "privacy": {
@@ -30,6 +52,23 @@
                 "Name",
                 "Arn"
             ]
+        },
+        {
+            "category": "function",
+            "resourceName": "helloworld",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "function",
+            "resourceName": "sessions",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
         }
-    ]
+    ],
+    "uuid": "b71bd951"
 }
