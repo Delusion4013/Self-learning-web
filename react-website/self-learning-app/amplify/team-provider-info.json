@@ -21,11 +21,11 @@
       "function": {
         "helloworld": {
           "deploymentBucketName": "amplify-selflearningapp-dev-223240-deployment",
-          "s3Key": "amplify-builds/helloworld-4a71504e494a51706c75-build.zip"
+          "s3Key": "amplify-builds/helloworld-4e396a355a74322b3476-build.zip"
         },
         "layouts": {
           "deploymentBucketName": "amplify-selflearningapp-dev-223240-deployment",
-          "s3Key": "amplify-builds/layouts-546670565073524f6b53-build.zip"
+          "s3Key": "amplify-builds/layouts-52793442643661736155-build.zip"
         },
         "testfunction": {
           "deploymentBucketName": "amplify-selflearningapp-dev-223240-deployment",
@@ -33,7 +33,7 @@
         },
         "sessions": {
           "deploymentBucketName": "amplify-selflearningapp-dev-223240-deployment",
-          "s3Key": "amplify-builds/sessions-5131676e596755774c30-build.zip"
+          "s3Key": "amplify-builds/sessions-4e313830426158556d57-build.zip"
         }
       }
     }
