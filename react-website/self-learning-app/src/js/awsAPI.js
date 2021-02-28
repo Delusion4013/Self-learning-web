@@ -28,7 +28,7 @@ async function exportSession(session) {
 		}
 	});
 	console.log(response);
-	return response
+	return response;
 }
 
 async function exportLayout(layout) {
@@ -40,7 +40,7 @@ async function exportLayout(layout) {
 		}
 	});
 	console.log(response);
-	return response
+	return response;
 }
 
 export {fetchLayouts, exportSession, exportLayout}

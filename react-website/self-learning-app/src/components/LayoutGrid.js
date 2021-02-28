@@ -55,10 +55,10 @@ function LayoutGrid(props) {
 				rect={element.rect}
 				isGoal={element.endGoal}
 				onClick={(e) => {
-					handleButton(e, this.state.session, element.id);
+					handleButton(e, session, element.id);
 					//if (element.endGoal) this.downloadUserSession(this.state.session);
 					if (element.endGoal) {
-						this.props.onGoal(this.state.session);
+						props.onGoal(session);
 					}
 				}}>
 				{element.content}
