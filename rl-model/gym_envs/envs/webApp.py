@@ -1,6 +1,7 @@
 import json
 import numpy
 from pathlib import Path
+import math
 from math import comb
 from itertools import permutations
 from itertools import combinations
@@ -44,10 +45,47 @@ class WebApp:
         # and transfer the data back to adapter
         #because there is no stop point for current model, so there is no need to update or check if it fails
         #Creates list of IDs
-        element = self.getPair(action)
-        firstElement = self.getElementID(element[0])
-        secondElement = self.getElementID(element[1])
-        self.swapElement(firstElement,secondElement)
+        """
+        takes an action and do it
+        
+        Parameters:
+        argument1(action): an integer that stands for a certain action
+        """
+        # based on the queue table, update the current website layout
+        # and transfer the data back to adapter
+        #because there is no stop point for current model, so there is no need to update or check if it fails
+        #Creates list of IDs
+        elementID=math.floor(action/(self.getGridSize()-1))  #50
+        destination=action%self.getGridSize()+1
+        temp=elementID
+        print(elementID)
+        print(destination)
+        for i in self.web['elements']:
+            if temp==0:
+                location=(i['rect']['y']-1)*self.getWidth()+i['rect']['x']
+                break
+            else:
+                temp=temp-1
+                continue
+
+        if destination<location:
+            pass
+        else:
+            destination=destination+1
+
+        id=1
+        for i in self.web['elements']:
+            if (i['rect']['x']-1)*self.getWidth()+i['rect']['y']==destination:
+                self.swapElement(elementID+1,id)
+                return
+            else:
+                continue
+        x=destination%self.getWidth()
+        y=destination/self.getWidth()+1
+        element=self.getElement(elementID+1)
+        element['rect']['x']=x
+        element['rect']['y']=y
+        self.writeBack()
         return
 
     def getPair(self,action):

@@ -19,8 +19,8 @@ class CustomEnv(gym.Env):
         elementNum = WebApp().getElementCount()
         #This is a equation to calculate the number of unique pairs
         #This can be done using math.comb(elementNum,2) however we know it a pair it can be so can be simplified 
-        combNumberOfPairs = (elementNum*(elementNum-1))/2
-        self.action_space = spaces.Discrete(combNumberOfPairs)
+        combNumberOfPairs = self.webApp.getElementCount()*(self.webApp.getGridSize()-1)
+        self.action_space = list(range(int(combNumberOfPairs)))
         #Fixed type error but not sure what value 100 means
         permCount = perm(self.webApp.getElementCount(),self.webApp.getElementCount())
         self.observation_space=spaces.Box(numpy.array([0]), numpy.array([permCount]), dtype=numpy.int)
@@ -58,4 +58,10 @@ class CustomEnv(gym.Env):
 
     def getObservationSpace(self):
         return self.observation_space
+
+    class observation:
+        def __init__(self,low,high):
+            self.low = low
+            self.high=high
+
     

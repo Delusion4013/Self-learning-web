@@ -5,6 +5,7 @@ import random
 import random as rand
 import gym
 import gym_envs
+from random import choice
 website_running = True
 
 class Rlmodel:
@@ -54,7 +55,7 @@ class Rlmodel:
         #print(env.observation_space.low)
         #print(obs_size)
         #Initialise q table values to zero
-        action_size=[int(self.env.action_space.n)]
+        action_size=[len(self.env.action_space)]
         self.qTable = numpy.zeros(obs_size + action_size)
         return
     
@@ -81,7 +82,7 @@ class Rlmodel:
             if self.randValue < self.epsilon:
                 #select a random action from action space
                 #Requires environment to be defined
-                action = self.env.action_space.sample()
+                action = choice(self.env.action_space)
                 exploreExploit = 1
                 #print("Explore")
             else:
