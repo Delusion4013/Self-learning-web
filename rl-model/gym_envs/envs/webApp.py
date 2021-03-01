@@ -64,7 +64,7 @@ class WebApp:
         argument1(action): an integer that stands for a certain action
         """
         elementID=math.floor(action/(self.getGridSize()-1))  #50
-        destination=((action+1)%self.getGridSize())+1
+        destination=(action%(self.getGridSize()-1))+1
         temp=elementID
         print(action)
         for i in self.web['elements']:
@@ -95,6 +95,8 @@ class WebApp:
         if x==0:
             x=5
         y=math.floor(destination/self.getWidth())+1
+        if y==6:
+            y=5
         element=self.getElement(self.getElementID(elementID+1))
         element['rect']['x']=x
         element['rect']['y']=y
