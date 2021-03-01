@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import TaskButton from './TaskButton';
-import handleButton from "./handleEvents";
+import handleButton from "../js/handleEvents";
 
 // creates layout grid preset from test.json, gets start time
 //time stamp, creates events stack
@@ -55,10 +55,10 @@ function LayoutGrid(props) {
 				rect={element.rect}
 				isGoal={element.endGoal}
 				onClick={(e) => {
-					handleButton(e, this.state.session, element.id);
+					handleButton(e, session, element.id);
 					//if (element.endGoal) this.downloadUserSession(this.state.session);
 					if (element.endGoal) {
-						this.props.onGoal(this.state.session);
+						props.onGoal(session);
 					}
 				}}>
 				{element.content}

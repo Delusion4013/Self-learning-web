@@ -8,7 +8,7 @@ const dynamodb = new AWS.DynamoDB.DocumentClient();
 let tableName = "layouts";
 if (process.env.ENV && process.env.ENV !== "NONE") {
 	tableName = tableName + '-' + process.env.ENV;
-}
+}	
 var app = express()
 app.use(bodyParser.json())
 app.use(awsServerlessExpressMiddleware.eventContext())
