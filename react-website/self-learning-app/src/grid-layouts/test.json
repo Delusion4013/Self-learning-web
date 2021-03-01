@@ -8,8 +8,8 @@
             "id":"signIn",
             "content":"Log in",
             "rect":{
-                "x":4,
-                "y":2,
+                "x":2,
+                "y":1,
                 "w":1,
                 "h":1
             }
@@ -29,8 +29,8 @@
             "id":"account",
             "content":"Account",
             "rect":{
-                "x":2,
-                "y":1,
+                "x":3,
+                "y":2,
                 "w":1,
                 "h":1
             }
@@ -39,22 +39,21 @@
             "id":"Test",
             "content":"Test",
             "rect":{
-                "x":1,
+                "x":4,
                 "y":2,
                 "w":2,
                 "h":1
             }
         },
-		{
+        {
             "id":"customer",
             "content":"Customer Service",
             "rect":{
-                "x":3,
+                "x":1,
                 "y":2,
                 "w":1,
                 "h":1
             }
         }
-		
     ]
 }

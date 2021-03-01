@@ -17,7 +17,6 @@ function handleButton(e, session, id) {
 		buttonId: id,
 		time: Date.now()
 	}
-
 	if (events) events.push(event);
     return;
 }
