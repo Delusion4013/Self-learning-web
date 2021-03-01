@@ -73,6 +73,7 @@ class Rlmodel:
         
     #Simulate environment and trains rl model
     def train(self):
+        print("ok")
         self.website_running = True
         i=0
         state = self.getState()

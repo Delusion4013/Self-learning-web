@@ -64,12 +64,13 @@ class WebApp:
         argument1(action): an integer that stands for a certain action
         """
         elementID=math.floor(action/(self.getGridSize()-1))  #50
-        destination=action%self.getGridSize()+1
+        destination=((action+1)%self.getGridSize())+1
         temp=elementID
-        print(elementID)
-        print(destination)
+        print(action)
         for i in self.web['elements']:
             if temp==0:
+                print(i['rect']['y'])
+                print(i['rect']['x'])
                 location=(i['rect']['y']-1)*self.getWidth()+i['rect']['x']
                 break
             else:
@@ -80,17 +81,21 @@ class WebApp:
             pass
         else:
             destination=destination+1
-
+        print(elementID+1)
+        print(location)
+        print(destination)
         id=1
         for i in self.web['elements']:
-            if (i['rect']['x']-1)*self.getWidth()+i['rect']['y']==destination:
-                self.swapElement(elementID+1,id)
+            if (i['rect']['y']-1)*self.getWidth()+i['rect']['x']==destination:
+                self.swapElement(self.getElementID(elementID+1),self.getElementID(id))
                 return
             else:
                 continue
-        x=destination%self.getWidth()
-        y=destination/self.getWidth()+1
-        element=self.getElement(elementID+1)
+        x=math.floor(destination%self.getWidth())
+        if x==0:
+            x=5
+        y=math.floor(destination/self.getWidth())+1
+        element=self.getElement(self.getElementID(elementID+1))
         element['rect']['x']=x
         element['rect']['y']=y
         self.writeBack()

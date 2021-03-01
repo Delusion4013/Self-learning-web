@@ -21,6 +21,7 @@ class CustomEnv(gym.Env):
         #This can be done using math.comb(elementNum,2) however we know it a pair it can be so can be simplified 
         combNumberOfPairs = self.webApp.getElementCount()*(self.webApp.getGridSize()-1)
         self.action_space = list(range(int(combNumberOfPairs)))
+        print(self.action_space)
         #Fixed type error but not sure what value 100 means
         permCount = perm(self.webApp.getElementCount(),self.webApp.getElementCount())
         self.observation_space=spaces.Box(numpy.array([0]), numpy.array([permCount]), dtype=numpy.int)
