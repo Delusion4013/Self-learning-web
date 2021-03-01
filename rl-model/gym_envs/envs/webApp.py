@@ -90,6 +90,7 @@ class WebApp:
                 self.swapElement(self.getElementID(elementID+1),self.getElementID(id))
                 return
             else:
+                id=id+1
                 continue
         x=math.floor(destination%self.getWidth())
         if x==0:
