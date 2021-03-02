@@ -8,7 +8,7 @@ from math import perm
 from gym_envs.envs.webApp import WebApp
 
 
-class CustomEnv(gym.Env):
+class CustomEnv():
     
     def __init__(self):
         #Initialise webApp

@@ -3,8 +3,7 @@ import numpy
 import math
 import random
 import random as rand
-import gym
-import gym_envs
+from gym_envs.envs.custom_env import CustomEnv
 from random import choice
 website_running = True
 
@@ -26,7 +25,7 @@ class Rlmodel:
     render = False
     website_running = None
     def __init__(self):
-        self.env = gym.make("Webapp-v0")
+        self.env = CustomEnv()
         self.createQtable()
 
     def setEpsilon(self,ep):
@@ -104,7 +103,7 @@ class Rlmodel:
             if(self.epsilon > 0.2):
                 self.epsilon *= self.epsilon_decay
             #print(self.epsilon)
-        self.env.close()
+        # self.env.close()
         return
 
     def getEpsilon(self):
