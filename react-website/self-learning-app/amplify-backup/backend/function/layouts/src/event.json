@@ -1,0 +1,6 @@
+{
+	"httpMethod": "GET",
+	"resource":"/layouts",
+	"path": "/layouts",
+	"body": null
+  }

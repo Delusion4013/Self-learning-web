@@ -41,7 +41,7 @@
                   
                   {
                       "AttributeName": "sessionId",
-                      "AttributeType": "S"
+                      "AttributeType": "N"
                   }  , 
                   
                   {

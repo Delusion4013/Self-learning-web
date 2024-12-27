@@ -1,7 +1,7 @@
 {
     "tableName": "layouts",
     "partitionKeyName": "layoutId",
-    "partitionKeyType": "S",
+    "partitionKeyType": "N",
     "sortKeyName": "createdAt",
     "sortKeyType": "S"
 }

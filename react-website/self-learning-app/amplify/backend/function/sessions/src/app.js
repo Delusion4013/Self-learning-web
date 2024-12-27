@@ -36,6 +36,19 @@ app.get("/sessions", function (request, response) {
 		TableName: tableName,
 		limit: limit
 	}
+
+/**
+ * Retrieves the {count} latest session from the DynamoDB and returns them
+ * Unless no value is provided, in which case returns the latest 1
+ */
+ app.get("/sessions/id", function (request, response) {
+	fetchNextId().then((id) => {
+		response.json({id});
+	}).catch((err) => {
+		response.json({ error: err });
+	});
+});
+
 	/*
 		So the steps here are:
 		 - Try to scan the table (retrieve all the entries in it up to limit)
@@ -62,22 +75,53 @@ app.get("/sessions", function (request, response) {
  */
 app.post("/sessions", function (request, response) {
 	const timestamp = new Date().toISOString();
-	let sessionId = request.body.id ? request.body.id : uuidv4();
+	fetchNextId().then((id) => {
+		let sessionId = id;
+		let params = {
+			TableName: tableName,
+			Item: {
+				...request.body.session,
+				sessionId,
+				createdAt: timestamp,
+			}
+		}
+		return params;
+	})
+		.then((params) => dynamodb.put(params).promise())
+		.then((result) => {
+			response.json({ statusCode: 200, url: request.url, body: JSON.stringify({ item: result.Item, result }) });
+		})
+		.catch((error) => {
+			response.json({ statusCode: 500, error: error.message, url: request.url });
+		});
+});
+
+async function fetchNextId() {
+	const limit = 1;
 	let params = {
 		TableName: tableName,
-		Item: {
-			...request.body.session,
-			sessionId,
-			createdAt: timestamp,
-		}
+		ScanIndexForward: true
 	}
-	dynamodb.put(params, (error, result) => {
-		if (error) {
-			response.json({ statusCode: 500, error: error.message, url: request.url });
+
+	/*
+		So the steps here are:
+		 - Try to scan the table (retrieve all the entries in it up to limit)
+		 - If there's an error with this, return the error
+		 - Otherwise return an array of the layouts found
+
+	*/
+	return dynamodb.scan(params).promise().then((result) => {
+		console.log("DEBUG: fetchNextId result:" + JSON.stringify(result));
+		if (result.Count == 0) return 1;
+		const sorted = result.Items.sort((a, b) => (parseInt(b.sessionId) - parseInt(a.sessionId)))
+		const lastId = result.Items[0].sessionId;
+		if (isNaN(lastId)) {
+			return -1;
 		} else {
-			response.json({ statusCode: 200, url: request.url, body: JSON.stringify({ item: params.Item, result }) })
+			return parseInt(lastId) + 1;
 		}
+
 	});
-});
+}
 
 module.exports = app;

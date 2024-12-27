@@ -46,6 +46,10 @@
     "sessionsDDB": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
+    },
+    "test": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
     }
   },
   "function": {

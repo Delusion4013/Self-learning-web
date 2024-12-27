@@ -1,0 +1,7 @@
+{
+    "tableName": "sessions",
+    "partitionKeyName": "sessionId",
+    "partitionKeyType": "S",
+    "sortKeyName": "createdAt",
+    "sortKeyType": "S"
+}

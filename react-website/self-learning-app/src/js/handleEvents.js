@@ -8,17 +8,26 @@
  * Adds the button click event to the given session, storing the button id and when it was clicked.
  * @param {*} e - The original JavaScript event for the click.
  * @param {*} session - The current session of user events.
- * @param {*} id - The unique id for the button to add to the session.
+ * @param {*} element - The unique id for the button to add to the session.
  */
-function handleButton(e, session, id) {
+export function handleButton(e, session, element) {
 	console.log(session);
 	let events = session.events;
 	let event = {
-		buttonId: id,
+		buttonId: element,
 		time: Date.now()
 	}
 	if (events) events.push(event);
     return;
 }
 
-export default handleButton;
+export function handleMouseMove(m, session) {
+	//console.log(`Adding mouse event: ${m}`);
+	const event = {
+		m,
+		time: Date.now()
+	}
+	session.mouseEvents.push(event);
+}
+
+

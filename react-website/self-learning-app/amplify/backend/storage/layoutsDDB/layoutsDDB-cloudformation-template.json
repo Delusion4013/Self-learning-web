@@ -41,7 +41,7 @@
                   
                   {
                       "AttributeName": "layoutId",
-                      "AttributeType": "S"
+                      "AttributeType": "N"
                   }  , 
                   
                   {

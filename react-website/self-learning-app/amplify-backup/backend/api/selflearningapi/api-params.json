@@ -1,0 +1,74 @@
+{
+    "paths": [
+        {
+            "name": "/layouts",
+            "lambdaFunction": "layouts",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/layouts"
+        },
+        {
+            "name": "/helloworld",
+            "lambdaFunction": "helloworld",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/helloworld"
+        },
+        {
+            "name": "/sessions",
+            "lambdaFunction": "sessions",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/sessions"
+        }
+    ],
+    "resourceName": "selflearningapi",
+    "apiName": "selflearningapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "layouts"
+        },
+        {
+            "lambdaFunction": "helloworld"
+        },
+        {
+            "lambdaFunction": "sessions"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-selflearningapp-dev-223240-authRole",
+        "unAuthRoleName": "amplify-selflearningapp-dev-223240-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "layouts",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "function",
+            "resourceName": "helloworld",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "function",
+            "resourceName": "sessions",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ],
+    "uuid": "b71bd951"
+}

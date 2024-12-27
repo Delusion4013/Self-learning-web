@@ -25,7 +25,7 @@
         },
         "layouts": {
           "deploymentBucketName": "amplify-selflearningapp-dev-223240-deployment",
-          "s3Key": "amplify-builds/layouts-52793442643661736155-build.zip"
+          "s3Key": "amplify-builds/layouts-412f2b39714e48577a74-build.zip"
         },
         "testfunction": {
           "deploymentBucketName": "amplify-selflearningapp-dev-223240-deployment",
@@ -33,7 +33,11 @@
         },
         "sessions": {
           "deploymentBucketName": "amplify-selflearningapp-dev-223240-deployment",
-          "s3Key": "amplify-builds/sessions-4e313830426158556d57-build.zip"
+          "s3Key": "amplify-builds/sessions-362f485650367a766b75-build.zip"
+        },
+        "rlmodel": {
+          "deploymentBucketName": "amplify-selflearningapp-dev-223240-deployment",
+          "s3Key": "amplify-builds/rlmodel-574d726f476877387633-build.zip"
         }
       }
     }
